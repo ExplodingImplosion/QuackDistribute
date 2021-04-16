@@ -1,0 +1,6 @@
+.import/
+*.import
+*.cfg
+replays/
+*.md5
+*.stex
