@@ -1,0 +1,738 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://interface/Menus/server menu.gd" type="Script" id=1]
+[ext_resource path="res://interface/fonts/montserrat_eb_48.tres" type="DynamicFont" id=2]
+[ext_resource path="res://interface/fonts/montserrat_eb_32.tres" type="DynamicFont" id=3]
+
+[sub_resource type="Theme" id=1]
+
+[node name="servermenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="ColorRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+color = Color( 0.129412, 0.4, 0.486275, 0.294118 )
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": ""
+}
+
+[node name="server Info Container" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -936.0
+margin_top = -532.0
+margin_right = -296.0
+margin_bottom = 24.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="server Info Container"]
+margin_right = 672.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "Server Info:"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="tickrate container" type="HBoxContainer" parent="server Info Container"]
+margin_top = 72.0
+margin_right = 672.0
+margin_bottom = 124.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="label" type="Label" parent="server Info Container/tickrate container"]
+margin_right = 197.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "Tickrate:"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="readout" type="Label" parent="server Info Container/tickrate container"]
+margin_left = 247.0
+margin_right = 456.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "[tickrate]"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="delta time container" type="HBoxContainer" parent="server Info Container"]
+margin_top = 144.0
+margin_right = 672.0
+margin_bottom = 196.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="label" type="Label" parent="server Info Container/delta time container"]
+margin_right = 361.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "Tick Delta Time:"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="readout" type="Label" parent="server Info Container/delta time container"]
+margin_left = 411.0
+margin_top = 6.0
+margin_right = 609.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 3 )
+text = "[delta time]"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="IP container" type="HBoxContainer" parent="server Info Container"]
+margin_top = 216.0
+margin_right = 672.0
+margin_bottom = 268.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="label" type="Label" parent="server Info Container/IP container"]
+margin_right = 245.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "IP address:"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="readout" type="Label" parent="server Info Container/IP container"]
+margin_left = 295.0
+margin_right = 372.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "[IP]"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Port container" type="HBoxContainer" parent="server Info Container"]
+margin_top = 288.0
+margin_right = 672.0
+margin_bottom = 340.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="label" type="Label" parent="server Info Container/Port container"]
+margin_right = 342.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "Gameplay port:"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="readout" type="Label" parent="server Info Container/Port container"]
+margin_left = 392.0
+margin_right = 519.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "[port]"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Browser port container" type="HBoxContainer" parent="server Info Container"]
+margin_top = 360.0
+margin_right = 672.0
+margin_bottom = 412.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="label" type="Label" parent="server Info Container/Browser port container"]
+margin_right = 434.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "Local browser port:"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="readout" type="Label" parent="server Info Container/Browser port container"]
+margin_left = 484.0
+margin_right = 611.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "[port]"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Local\? container" type="HBoxContainer" parent="server Info Container"]
+margin_top = 432.0
+margin_right = 672.0
+margin_bottom = 484.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="label" type="Label" parent="server Info Container/Local\? container"]
+margin_right = 283.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "Local server:"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="readout" type="Label" parent="server Info Container/Local\? container"]
+margin_left = 333.0
+margin_right = 582.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "[true/false]"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Online port container" type="HBoxContainer" parent="server Info Container" groups=[
+"Online Readouts",
+]]
+margin_top = 504.0
+margin_right = 672.0
+margin_bottom = 556.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="label" type="Label" parent="server Info Container/Online port container"]
+margin_right = 463.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "Online browser port:"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="readout" type="Label" parent="server Info Container/Online port container"]
+margin_left = 513.0
+margin_right = 640.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "[port]"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Destination container" type="HBoxContainer" parent="server Info Container" groups=[
+"Online Readouts",
+]]
+margin_top = 576.0
+margin_right = 672.0
+margin_bottom = 628.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="label" type="Label" parent="server Info Container/Destination container"]
+margin_right = 432.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "Online Destination:"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="readout" type="Label" parent="server Info Container/Destination container"]
+margin_left = 482.0
+margin_right = 559.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "[IP]"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Players List" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -352.0
+margin_top = -540.0
+margin_right = 278.0
+margin_bottom = 132.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Reset Camera Option" type="ToolButton" parent="Players List"]
+margin_right = 630.0
+margin_bottom = 60.0
+theme = SubResource( 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Reset Camera"
+
+[node name="Label" type="Label" parent="Players List"]
+margin_top = 80.0
+margin_right = 630.0
+margin_bottom = 132.0
+custom_fonts/font = ExtResource( 2 )
+text = "Players:"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="tick readout container" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 232.0
+margin_top = -476.0
+margin_right = 895.0
+margin_bottom = -424.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Tick label" type="Label" parent="tick readout container"]
+margin_right = 291.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "Current Tick:"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Tick Readout" type="Label" parent="tick readout container"]
+margin_left = 311.0
+margin_right = 663.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "[tick goes here]"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="time readout container" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 400.0
+margin_top = -428.0
+margin_right = 912.0
+margin_bottom = -376.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Time label" type="Label" parent="time readout container"]
+margin_right = 123.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "Time:"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Time Readout" type="Label" parent="time readout container"]
+margin_left = 143.0
+margin_right = 512.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "[time goes here]"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="player Info Container" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 248.0
+margin_top = -316.0
+margin_right = 888.0
+margin_bottom = 240.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="player Info Container"]
+margin_right = 640.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "[Player ID]"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Ping container" type="HBoxContainer" parent="player Info Container"]
+margin_top = 72.0
+margin_right = 640.0
+margin_bottom = 124.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="label" type="Label" parent="player Info Container/Ping container"]
+margin_right = 115.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "Ping:"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="readout" type="Label" parent="player Info Container/Ping container"]
+margin_left = 165.0
+margin_right = 298.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "[ping]"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Position container" type="HBoxContainer" parent="player Info Container"]
+margin_top = 144.0
+margin_right = 640.0
+margin_bottom = 196.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="label" type="Label" parent="player Info Container/Position container"]
+margin_right = 196.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "Position:"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="readout" type="Label" parent="player Info Container/Position container"]
+margin_left = 246.0
+margin_top = 6.0
+margin_right = 408.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 3 )
+text = "[position]"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Velocity Container" type="HBoxContainer" parent="player Info Container"]
+margin_top = 216.0
+margin_right = 640.0
+margin_bottom = 268.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="label" type="Label" parent="player Info Container/Velocity Container"]
+margin_right = 195.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "Velocity:"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="readout" type="Label" parent="player Info Container/Velocity Container"]
+margin_left = 245.0
+margin_top = 6.0
+margin_right = 404.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 3 )
+text = "[velocity]"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Aim container" type="HBoxContainer" parent="player Info Container"]
+margin_top = 288.0
+margin_right = 640.0
+margin_bottom = 340.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="label" type="Label" parent="player Info Container/Aim container"]
+margin_right = 239.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "Aim angle:"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="readout" type="Label" parent="player Info Container/Aim container"]
+margin_left = 289.0
+margin_top = 6.0
+margin_right = 481.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 3 )
+text = "[aim angle]"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Direction Container" type="HBoxContainer" parent="player Info Container"]
+margin_top = 360.0
+margin_right = 640.0
+margin_bottom = 412.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="label" type="Label" parent="player Info Container/Direction Container"]
+margin_right = 220.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "Direction:"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="readout" type="Label" parent="player Info Container/Direction Container"]
+margin_left = 270.0
+margin_top = 6.0
+margin_right = 447.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 3 )
+text = "[direction]"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="HP Container" type="HBoxContainer" parent="player Info Container"]
+margin_top = 432.0
+margin_right = 640.0
+margin_bottom = 484.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="label" type="Label" parent="player Info Container/HP Container"]
+margin_right = 160.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "Health:"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="readout" type="Label" parent="player Info Container/HP Container"]
+margin_left = 210.0
+margin_right = 300.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "[hp]"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Onfloor Container" type="HBoxContainer" parent="player Info Container"]
+margin_top = 504.0
+margin_right = 640.0
+margin_bottom = 556.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="label" type="Label" parent="player Info Container/Onfloor Container"]
+margin_right = 182.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "Onfloor:"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="readout" type="Label" parent="player Info Container/Onfloor Container"]
+margin_left = 232.0
+margin_right = 426.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "[onfloor]"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Server actions container" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = 164.0
+margin_right = -320.0
+margin_bottom = 216.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="Server actions container"]
+margin_right = 640.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "Server Actions:"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Dump Replay" type="Button" parent="Server actions container"]
+margin_top = 72.0
+margin_right = 640.0
+margin_bottom = 130.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 1, 0.196078, 1 )
+custom_colors/font_color_hover = Color( 1, 0.494118, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0, 0.74902, 1 )
+text = "Dump Replay"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Disconnect Current Player" type="Button" parent="Server actions container"]
+margin_top = 150.0
+margin_right = 640.0
+margin_bottom = 208.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.929412, 0.486275, 0.054902, 1 )
+custom_colors/font_color_hover = Color( 1, 0, 0.537255, 1 )
+custom_colors/font_color_pressed = Color( 1, 0, 0.74902, 1 )
+text = "Disconnect Current Player"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Shut Down server" type="Button" parent="Server actions container"]
+margin_top = 228.0
+margin_right = 640.0
+margin_bottom = 286.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Shut Down Server"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Quit" type="Button" parent="Server actions container"]
+margin_top = 306.0
+margin_right = 640.0
+margin_bottom = 364.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Quit Client"
+__meta__ = {
+"_editor_description_": ""
+}
+[connection signal="pressed" from="Players List/Reset Camera Option" to="." method="_on_camera_reset"]
+[connection signal="pressed" from="Server actions container/Dump Replay" to="." method="_on_Dump_Replay_pressed"]
+[connection signal="pressed" from="Server actions container/Disconnect Current Player" to="." method="_on_Disconnect_Current_Player_pressed"]
+[connection signal="pressed" from="Server actions container/Shut Down server" to="." method="_on_Shut_Down_server_pressed"]
+[connection signal="pressed" from="Server actions container/Quit" to="." method="_on_Quit_pressed"]

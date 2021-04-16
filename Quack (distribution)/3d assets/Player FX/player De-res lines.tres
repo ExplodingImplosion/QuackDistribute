@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://3d assets/Player FX/player deres lines.tres" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/Color = Color( 1, 1, 100, 1 )
+shader_param/Speed = 0.2
+shader_param/Divisor = 1.25
+shader_param/Counts = 0.612
+shader_param/Power_Degree = 60.0
+shader_param/Multiply_Degree = 1.0

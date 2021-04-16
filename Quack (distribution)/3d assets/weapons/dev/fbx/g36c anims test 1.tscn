@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://3d assets/weapons/dev/fbx/g36 anims.fbx" type="PackedScene" id=1]
+
+[node name="g36 anims" instance=ExtResource( 1 )]
+
+[node name="Hands" parent="." index="0"]
+transform = Transform( 100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0 )
+
+[node name="non-ts css" parent="Hands" index="2"]
+transform = Transform( 1, 0, 0, 0, 0.969982, 0.243177, 0, -0.243177, 0.969982, 0.00045, 1.5e-05, 0.000145 )
+visible = false
+
+[node name="Camera" parent="." index="1"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+fov = 74.4
+near = 0.01
+far = 8192.0
+
+[node name="Sun000" parent="." index="2"]
+visible = false
+
+[node name="Sun001" parent="." index="3"]
+visible = false
+
+[node name="Sun003" parent="." index="4"]
+visible = false
+
+[node name="camera-center-point2" parent="." index="5"]
+visible = false

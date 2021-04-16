@@ -1,0 +1,236 @@
+[gd_scene load_steps=45 format=2]
+
+[ext_resource path="res://Weapons/Base Weapon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://3d assets/weapons/AK/AK viewmodel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://3d assets/weapons/AK/AK anims.tscn" type="PackedScene" id=3]
+
+[sub_resource type="AnimationNodeAdd2" id=21]
+
+[sub_resource type="AnimationNodeAdd2" id=26]
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "aim_modifier_root"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "aim_up"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "aim_right"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "aim_down"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "aim_left"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "aim_up_right"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "aim_down_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=5]
+auto_triangles = false
+blend_point_0/node = SubResource( 4 )
+blend_point_0/pos = Vector2( 0, 0 )
+blend_point_1/node = SubResource( 6 )
+blend_point_1/pos = Vector2( 0, 1 )
+blend_point_2/node = SubResource( 7 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 8 )
+blend_point_3/pos = Vector2( 0, -1 )
+blend_point_4/node = SubResource( 9 )
+blend_point_4/pos = Vector2( -1, 0 )
+blend_point_5/node = SubResource( 10 )
+blend_point_5/pos = Vector2( 1, 1 )
+blend_point_6/node = SubResource( 11 )
+blend_point_6/pos = Vector2( 1, -1 )
+triangles = PoolIntArray( 0, 1, 4, 0, 3, 4, 0, 3, 6, 0, 1, 5, 0, 2, 5, 0, 2, 6 )
+snap = Vector2( 1, 1 )
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "ads_anim"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "ads_pos"
+
+[sub_resource type="AnimationNodeAnimation" id=40]
+animation = "leave_ads_anim"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "leave_ads_anim"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "reload"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "tacreload"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachine" id=2]
+states/BlendSpace2D/node = SubResource( 5 )
+states/BlendSpace2D/position = Vector2( 657, 371 )
+states/ads_anim/node = SubResource( 12 )
+states/ads_anim/position = Vector2( 411, 269 )
+states/ads_pos/node = SubResource( 13 )
+states/ads_pos/position = Vector2( 603, 190 )
+states/leave_ads_anim/node = SubResource( 14 )
+states/leave_ads_anim/position = Vector2( 821, 239 )
+"states/leave_ads_anim 2/node" = SubResource( 40 )
+"states/leave_ads_anim 2/position" = Vector2( 233, 190 )
+states/reload/node = SubResource( 15 )
+states/reload/position = Vector2( 411, 535 )
+states/tacreload/node = SubResource( 16 )
+states/tacreload/position = Vector2( 737, 577 )
+transitions = [ "BlendSpace2D", "ads_anim", SubResource( 30 ), "ads_anim", "ads_pos", SubResource( 31 ), "ads_pos", "leave_ads_anim", SubResource( 32 ), "ads_anim", "leave_ads_anim", SubResource( 33 ), "leave_ads_anim", "BlendSpace2D", SubResource( 34 ), "BlendSpace2D", "reload", SubResource( 35 ), "reload", "BlendSpace2D", SubResource( 36 ), "BlendSpace2D", "tacreload", SubResource( 37 ), "tacreload", "BlendSpace2D", SubResource( 38 ), "ads_pos", "leave_ads_anim 2", SubResource( 41 ), "leave_ads_anim 2", "reload", SubResource( 42 ) ]
+start_node = "BlendSpace2D"
+graph_offset = Vector2( -110, 145 )
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "blank"
+
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "blank"
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "fire"
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "fire"
+
+[sub_resource type="AnimationNodeAdd2" id=17]
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "lean right"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "lean left"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id=20]
+blend_point_0/node = SubResource( 18 )
+blend_point_0/pos = 1.0
+blend_point_1/node = SubResource( 19 )
+blend_point_1/pos = -1.0
+snap = 1.0
+
+[sub_resource type="AnimationNodeOneShot" id=23]
+
+[sub_resource type="AnimationNodeOneShot" id=29]
+
+[sub_resource type="AnimationNodeBlendTree" id=39]
+graph_offset = Vector2( -769, 117.25 )
+"nodes/add shot 1/node" = SubResource( 21 )
+"nodes/add shot 1/position" = Vector2( 140, 240 )
+"nodes/add shot 2/node" = SubResource( 26 )
+"nodes/add shot 2/position" = Vector2( 402, 337.75 )
+nodes/aiming/node = SubResource( 2 )
+nodes/aiming/position = Vector2( -620, 100 )
+nodes/blank1/node = SubResource( 22 )
+nodes/blank1/position = Vector2( -360, 480 )
+nodes/blank2/node = SubResource( 28 )
+nodes/blank2/position = Vector2( 131, 483.75 )
+nodes/fire1/node = SubResource( 25 )
+nodes/fire1/position = Vector2( -337, 647 )
+nodes/fire2/node = SubResource( 27 )
+nodes/fire2/position = Vector2( 84, 595.75 )
+"nodes/lean + aim/node" = SubResource( 17 )
+"nodes/lean + aim/position" = Vector2( -184, 144 )
+nodes/leanblendspace/node = SubResource( 20 )
+nodes/leanblendspace/position = Vector2( -620, 240 )
+"nodes/oneshot 1/node" = SubResource( 23 )
+"nodes/oneshot 1/position" = Vector2( -114, 386 )
+"nodes/oneshot 2/node" = SubResource( 29 )
+"nodes/oneshot 2/position" = Vector2( 350, 650.75 )
+nodes/output/position = Vector2( 600, 160 )
+node_connections = [ "output", 0, "add shot 2", "add shot 1", 0, "lean + aim", "add shot 1", 1, "oneshot 1", "add shot 2", 0, "add shot 1", "add shot 2", 1, "oneshot 2", "lean + aim", 0, "aiming", "lean + aim", 1, "leanblendspace", "oneshot 2", 0, "blank2", "oneshot 2", 1, "fire2", "oneshot 1", 0, "blank1", "oneshot 1", 1, "fire1" ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=3]
+
+[sub_resource type="Animation" id=24]
+resource_name = "blank"
+length = 0.001
+
+[node name="AK" instance=ExtResource( 1 )]
+fire_rate = 0.1
+magsize = 30
+reload_speed = 2.7
+dmg = 39
+hs_mult = 4
+vrecoil = 12.5
+hrecoil = 10.0
+aim_vrecoil = 8.0
+aim_hrecoil = 6.0
+max_vrecoil = 2.0
+curve_width = 1.8
+firing_stability = 0.95
+movement_stability = 0.6
+aim_movement_stability = 0.75
+weight = 0.15
+aim_weight = 0.55
+section = 3
+price = 2700
+caliber = 2
+
+[node name="tree" parent="." index="2"]
+tree_root = SubResource( 39 )
+anim_player = NodePath("../AK/AnimationPlayer2")
+active = true
+"parameters/add shot 1/add_amount" = 1.0
+"parameters/add shot 2/add_amount" = 1.0
+parameters/aiming/playback = SubResource( 3 )
+parameters/aiming/BlendSpace2D/blend_position = Vector2( 0, 0 )
+"parameters/lean + aim/add_amount" = 1.0
+parameters/leanblendspace/blend_position = 0.0
+"parameters/oneshot 1/active" = false
+"parameters/oneshot 2/active" = false
+
+[node name="AK" parent="." index="3" instance=ExtResource( 2 )]
+transform = Transform( 0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0 )
+
+[node name="AnimationPlayer2" parent="AK" index="8" instance=ExtResource( 3 )]
+anims/blank = SubResource( 24 )
+
+[node name="Camera" type="Camera" parent="." index="4"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+keep_aspect = 0
+fov = 100.0
+near = 0.01

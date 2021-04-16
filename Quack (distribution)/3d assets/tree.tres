@@ -1,0 +1,301 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=65 format=2]
+
+[sub_resource type="AnimationNodeAdd2" id=1]
+
+[sub_resource type="AnimationNodeAdd2" id=2]
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "blank"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "blank"
+
+[sub_resource type="AnimationNodeOneShot" id=5]
+
+[sub_resource type="AnimationNodeOneShot" id=6]
+fadein_time = 0.0
+fadeout_time = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "Hands|fire"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "Hands|fire"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "Hands|fire"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Hands|ads_pos"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "Hands|aim_modifier_root"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "Hands|aim_up"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "Hands|aim_up_right"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Hands|aim_left"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "Hands|aim_right"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "Hands|aim_down"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "Hands|aim_up_left"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "Hands|aim_down_right"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "Hands|aim_down_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=20]
+auto_triangles = false
+blend_point_0/node = SubResource( 11 )
+blend_point_0/pos = Vector2( 0, 0 )
+blend_point_1/node = SubResource( 12 )
+blend_point_1/pos = Vector2( 0, 1 )
+blend_point_2/node = SubResource( 13 )
+blend_point_2/pos = Vector2( 1, 1 )
+blend_point_3/node = SubResource( 14 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_point_4/node = SubResource( 15 )
+blend_point_4/pos = Vector2( 1, 0 )
+blend_point_5/node = SubResource( 16 )
+blend_point_5/pos = Vector2( 0, -1 )
+blend_point_6/node = SubResource( 17 )
+blend_point_6/pos = Vector2( -1, 1 )
+blend_point_7/node = SubResource( 18 )
+blend_point_7/pos = Vector2( 1, -1 )
+blend_point_8/node = SubResource( 19 )
+blend_point_8/pos = Vector2( -1, -1 )
+triangles = PoolIntArray( 0, 1, 4, 1, 2, 4, 0, 1, 6, 0, 3, 6, 0, 4, 7, 0, 5, 7, 0, 3, 8, 0, 5, 8 )
+snap = Vector2( 1, 1 )
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "Hands|lean_left"
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "Hands|lean_left_aim_left"
+
+[sub_resource type="AnimationNodeAnimation" id=23]
+animation = "Hands|lean_left_aim_right"
+
+[sub_resource type="AnimationNodeAnimation" id=24]
+animation = "Hands|lean_left_aim_up_left"
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "Hands|lean_left_aim_down"
+
+[sub_resource type="AnimationNodeAnimation" id=26]
+animation = "Hands|lean_left_aim_down_right"
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "Hands|lean_left_aim_down_left"
+
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "Hands|lean_left_aim_up"
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "Hands|lean_left_aim_up_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=30]
+blend_point_0/node = SubResource( 21 )
+blend_point_0/pos = Vector2( 0, 0 )
+blend_point_1/node = SubResource( 22 )
+blend_point_1/pos = Vector2( -1, 0 )
+blend_point_2/node = SubResource( 23 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 24 )
+blend_point_3/pos = Vector2( -1, 1 )
+blend_point_4/node = SubResource( 25 )
+blend_point_4/pos = Vector2( 0, -1 )
+blend_point_5/node = SubResource( 26 )
+blend_point_5/pos = Vector2( 1, -1 )
+blend_point_6/node = SubResource( 27 )
+blend_point_6/pos = Vector2( -1, -1 )
+blend_point_7/node = SubResource( 28 )
+blend_point_7/pos = Vector2( 0, 1 )
+blend_point_8/node = SubResource( 29 )
+blend_point_8/pos = Vector2( 1, 1 )
+snap = Vector2( 1, 1 )
+
+[sub_resource type="AnimationNodeAnimation" id=31]
+animation = "Hands|lean_right"
+
+[sub_resource type="AnimationNodeAnimation" id=32]
+animation = "Hands|lean_right_aim_up"
+
+[sub_resource type="AnimationNodeAnimation" id=33]
+animation = "Hands|lean_right_aim_up_right"
+
+[sub_resource type="AnimationNodeAnimation" id=34]
+animation = "Hands|lean_right_aim_left"
+
+[sub_resource type="AnimationNodeAnimation" id=35]
+animation = "Hands|lean_right_aim_right"
+
+[sub_resource type="AnimationNodeAnimation" id=36]
+animation = "Hands|lean_right_aim_up_left"
+
+[sub_resource type="AnimationNodeAnimation" id=37]
+animation = "Hands|lean_right_aim_down"
+
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "Hands|lean_right_aim_down_right"
+
+[sub_resource type="AnimationNodeAnimation" id=39]
+animation = "Hands|lean_right_aim_down_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=40]
+blend_point_0/node = SubResource( 31 )
+blend_point_0/pos = Vector2( 0, 0 )
+blend_point_1/node = SubResource( 32 )
+blend_point_1/pos = Vector2( 0, 1 )
+blend_point_2/node = SubResource( 33 )
+blend_point_2/pos = Vector2( 1, 1 )
+blend_point_3/node = SubResource( 34 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_point_4/node = SubResource( 35 )
+blend_point_4/pos = Vector2( 1, 0 )
+blend_point_5/node = SubResource( 36 )
+blend_point_5/pos = Vector2( -1, 1 )
+blend_point_6/node = SubResource( 37 )
+blend_point_6/pos = Vector2( 0, -1 )
+blend_point_7/node = SubResource( 38 )
+blend_point_7/pos = Vector2( 1, -1 )
+blend_point_8/node = SubResource( 39 )
+blend_point_8/pos = Vector2( -1, -1 )
+snap = Vector2( 1, 1 )
+
+[sub_resource type="AnimationNodeBlendSpace1D" id=41]
+blend_point_0/node = SubResource( 20 )
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource( 30 )
+blend_point_1/pos = -1.0
+blend_point_2/node = SubResource( 40 )
+blend_point_2/pos = 1.0
+snap = 1.0
+
+[sub_resource type="AnimationNodeAnimation" id=42]
+animation = "Hands|fire"
+
+[sub_resource type="AnimationNodeAnimation" id=43]
+animation = "Hands|ads_anim"
+
+[sub_resource type="AnimationNodeAnimation" id=44]
+animation = "Hands|leave_ads_anim"
+
+[sub_resource type="AnimationNodeAnimation" id=45]
+animation = "Hands|reload"
+
+[sub_resource type="AnimationNodeAnimation" id=46]
+animation = "Hands|tacreload"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=47]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=48]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=49]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=50]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=51]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=52]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=53]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=54]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=55]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=56]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=57]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.05
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=59]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=60]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=61]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=62]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=63]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachine" id=64]
+states/ADS/node = SubResource( 10 )
+states/ADS/position = Vector2( 525, -10 )
+"states/ADS fire/node" = SubResource( 9 )
+"states/ADS fire/position" = Vector2( 525, -105 )
+states/aimdirs/node = SubResource( 41 )
+states/aimdirs/position = Vector2( 525, 136 )
+states/fire/node = SubResource( 42 )
+states/fire/position = Vector2( 778, 136 )
+"states/goto ADS/node" = SubResource( 43 )
+"states/goto ADS/position" = Vector2( 234, 37 )
+"states/leave ADS/node" = SubResource( 44 )
+"states/leave ADS/position" = Vector2( 699, 37 )
+states/reload/node = SubResource( 45 )
+states/reload/position = Vector2( 234, 136 )
+states/tacreload/node = SubResource( 46 )
+states/tacreload/position = Vector2( 525, 249 )
+transitions = [ "aimdirs", "goto ADS", SubResource( 47 ), "goto ADS", "ADS", SubResource( 48 ), "ADS", "leave ADS", SubResource( 49 ), "leave ADS", "aimdirs", SubResource( 50 ), "aimdirs", "fire", SubResource( 51 ), "aimdirs", "reload", SubResource( 52 ), "aimdirs", "tacreload", SubResource( 53 ), "tacreload", "aimdirs", SubResource( 54 ), "reload", "aimdirs", SubResource( 55 ), "ADS", "ADS fire", SubResource( 56 ), "ADS fire", "ADS", SubResource( 57 ), "fire", "aimdirs", SubResource( 58 ), "goto ADS", "reload", SubResource( 59 ), "goto ADS", "tacreload", SubResource( 60 ), "goto ADS", "leave ADS", SubResource( 61 ), "leave ADS", "tacreload", SubResource( 62 ), "leave ADS", "reload", SubResource( 63 ) ]
+start_node = "aimdirs"
+graph_offset = Vector2( -154, -36 )
+
+[resource]
+graph_offset = Vector2( -575, 170 )
+"nodes/add shot 1/node" = SubResource( 1 )
+"nodes/add shot 1/position" = Vector2( 0, 160 )
+"nodes/add shot 2/node" = SubResource( 2 )
+"nodes/add shot 2/position" = Vector2( 220, 160 )
+nodes/blank1/node = SubResource( 3 )
+nodes/blank1/position = Vector2( -559, 295 )
+nodes/blank2/node = SubResource( 4 )
+nodes/blank2/position = Vector2( -60, 340 )
+nodes/output/position = Vector2( 460, 140 )
+nodes/shoot/node = SubResource( 7 )
+nodes/shoot/position = Vector2( -480, 440 )
+"nodes/shoot gun/node" = SubResource( 6 )
+"nodes/shoot gun/position" = Vector2( -240, 260 )
+"nodes/shoot gun 2/node" = SubResource( 5 )
+"nodes/shoot gun 2/position" = Vector2( 140, 380 )
+nodes/shoot2/node = SubResource( 8 )
+nodes/shoot2/position = Vector2( -100, 500 )
+"nodes/weapon state/node" = SubResource( 64 )
+"nodes/weapon state/position" = Vector2( -300, 140 )
+node_connections = [ "output", 0, "add shot 2", "shoot gun 2", 0, "blank2", "shoot gun 2", 1, "shoot2", "add shot 1", 0, "weapon state", "add shot 1", 1, "shoot gun", "add shot 2", 0, "add shot 1", "add shot 2", 1, "shoot gun 2", "shoot gun", 0, "blank1", "shoot gun", 1, "shoot" ]
