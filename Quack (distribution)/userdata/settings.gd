@@ -1,13 +1,13 @@
 extends Node
 
 
-const SAVE_PATH = "res://userdata/config.cfg"
+const SAVE_PATH = "user://config.cfg"
 
 var _config = ConfigFile.new()
 
 const _defaults = {
 	"Mouse" : {
-		"Sensitivity": 1,
+		"Sensitivity": 5,
 		"Invertlook": false,
 		"Confinecursortogamewindowinfullscreen": false
 	},
@@ -45,7 +45,7 @@ const _defaults = {
 		"BorderOpacity": 255,
 		"Gap": 1,
 		"Dot": true,
-		"DotColor": Color(0,255,0,255),
+		"DotColor": Color(255,255,255,255),
 		"DotOpacity": 69,
 		"DotSize": 1,
 		"DotBorder": true
@@ -87,5 +87,6 @@ func reset_to_defaults():
 	for section in _defaults.keys():
 		for key in _defaults[section]:
 			_config.set_value(section, key, _defaults[section][key])
+	_config.set_value("Video Settings", "Resolution", OS.get_screen_size())
 	
 	_config.save(SAVE_PATH)

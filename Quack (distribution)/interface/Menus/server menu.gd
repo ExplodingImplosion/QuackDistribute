@@ -22,7 +22,8 @@ onready var playerdir = $"player Info Container/Direction Container/readout"
 onready var playerHP = $"player Info Container/HP Container/readout"
 onready var playeronfloor = $"player Info Container/Onfloor Container/readout"
 onready var playerping = $"player Info Container/Ping container/readout"
-#onready var  = $"Player Info Container/"
+onready var behindbutton = $"player Info Container/Ticks Behind Container/button"
+onready var behindsetter = $"player Info Container/Ticks Behind Container/setter"
 
 onready var expected_delta: String = str(1.0 / Engine.iterations_per_second)
 onready var stringtickrate: String = str(Engine.iterations_per_second)
@@ -100,11 +101,11 @@ func _on_Dump_Replay_pressed():
 
 
 func _on_Disconnect_Current_Player_pressed():
-	if current_player_id != 0:
+	if current_player_id == 0:
+		print("cannot disconnect a player if a player is not selected!")
+	else:
 		print("forcefully disconnecting peer %s" % [current_player_id])
 		get_parent().peer.disconnect_peer(current_player_id)
-	else:
-		print("cannot disconnect a player if a player is not selected!")
 
 
 func _on_Shut_Down_server_pressed():
@@ -114,3 +115,16 @@ func _on_Shut_Down_server_pressed():
 func _on_Quit_pressed():
 	print("Quitting server...")
 	get_parent()._on_quit_pressed()
+
+
+func _on_ticks_behind_changed(new_text: String):
+	print("setting new text")
+	behindsetter.set_text(str(clamp(int(new_text), 0, 50)))
+
+# this is the dumbest workaround ive ever fucking experienced lmfaoooooo
+func _on_ticks_behind_confirmed(nothing: String = "lol"):
+	if current_player_id == 0:
+		print("cannot manually change player variables if no player is selected!")
+	else:
+		print("manually changing ticks behind on player %s to %s" %[current_player_id, behindsetter.get_text()])
+		get_parent().manually_set_ticks_behind(current_player_id, int(behindsetter.get_text()))

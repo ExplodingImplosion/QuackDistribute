@@ -81,14 +81,15 @@ class tick:
 
 class replay:
 	var tick_history: Array
-	var tickrate: float
+	var tickrate: int
 	var snapshot_tick_rate: int
 	var lifetime_dirtied_set
 	
-	func _init(this_history: Array, rate: float, snapshot_rate: int):
+	func _init(this_history: Array, rate: int, snapshot_rate: int, this_dirtied_set: Array = []):
 		tick_history = this_history
 		tickrate = rate
 		snapshot_tick_rate = snapshot_rate
+		lifetime_dirtied_set = this_dirtied_set
 	
 	func add(this_tick: tick):
 		tick_history.append(this_tick.export_tick())
@@ -96,12 +97,21 @@ class replay:
 	func get_tick(tick: int):
 		return tick_history[tick]
 
+# hmmmm I'm beginning to wonder if we even needed a replay class at all... :DDDDDDDD
+func make_replay_dictionary(tickrate: int, snapshot_tickrate: int, tick_history:= [], lifetime_dirtied_set:= []) -> Dictionary:
+	return {
+		"tick_history": tick_history,
+		"tickrate": tickrate,
+		"snapshot_tickrate": snapshot_tickrate,
+		"lifetime_dirtied_set": lifetime_dirtied_set}
+
+
 func _dump_replay(this_replay: replay):
 	var clientorserver: String
 	if get_tree().is_network_server():
 		clientorserver = "server replay "
 	else:
-		clientorserver = "client replay "
+		clientorserver = "client %s replay " % [selfid]
 	var this_datetime = OS.get_datetime()
 	var datetime_string = str(str(this_datetime["month"]) + "-" + str(this_datetime["day"]) + "-" + str(this_datetime["year"]) + "; " + str(this_datetime["hour"]) + "-" + str(this_datetime["minute"]) + " (" + str(this_datetime["second"]) + ")")
 	# if all unique ID's are enclosed in curly brackets, then we should just add a space to these strings. but if we
@@ -111,8 +121,11 @@ func _dump_replay(this_replay: replay):
 	if this_replay != null:
 		if this_replay.tick_history != []:
 			var replay_file = File.new()
+			print("opening...")
 			replay_file.open(save_path + clientorserver + datetime_string + os_id_string + ".txt", File.WRITE)
-			replay_file.store_string(var2str(this_replay))
+			print("storing...")
+			replay_file.store_string(var2str(make_replay_dictionary(this_replay.tickrate, this_replay.snapshot_tick_rate, this_replay.tick_history, this_replay.lifetime_dirtied_set)))
+			print("closing...")
 			replay_file.close()
 			print("dumped " + clientorserver + datetime_string + " at " + save_path)
 		else:
@@ -150,6 +163,9 @@ class recentHistory:
 	func add(this_tick: tick) -> void:
 		tick_history.append(this_tick.export_tick())
 	
+	func add_exported(this_tick: Dictionary) -> void:
+		tick_history.append(this_tick)
+	
 	func size() -> int:
 		return tick_history.size()
 	
@@ -161,15 +177,15 @@ class recentHistory:
 # class, I frankly have absolutely zero fuckin clue. Also, why is recentHistory
 # one word with capitalizations? idk most of my other shit uses underscores.
 # holy fuck im bad at this
-func append_to_recent_history(this_tick: tick):
-	recent_ticks.add(this_tick)
+func append_to_recent_history(this_tick: Dictionary):
+	recent_ticks.add_exported(this_tick)
 	if recent_ticks.size() >= recent_history_max_size:
 		for i in range (recent_ticks.size() - recent_history_max_size):
 			recent_ticks.remove(i)
 	
 
-func append_to_history(this_tick: tick):
-	history.tick_history.append(this_tick.export_tick())
+func append_to_history(this_tick: Dictionary):
+	history.tick_history.append(this_tick)
 	append_to_recent_history(this_tick)
 
 class playerdata:
@@ -269,16 +285,18 @@ func apply_tick(this_tick: tick):
 		
 		var difference: Vector3 = (predicted_player.position - this_tick.players[player].position).abs()
 		if difference.x > max_dist || difference.y > max_dist || difference.z > max_dist:
+			print("-------")
 			print(myping)
 			print(number_of_ticks_behind)
 #			print(myping)
-#			print(max_dist)
+			print(max_dist)
 #			print(current_player.global_transform.origin)
 #			print(this_tick.players[player].position)
 #			print(default_max_dist_air)
-#			print(max_dist_air)
+			print(max_dist_air)
 #			print(default_max_dist_floor)
-#			print(max_dist_floor)
+			print(max_dist_floor)
+			print("------")
 			current_player.global_transform.origin = this_tick.players[player].position
 #			print("correcting player position...")
 		
@@ -437,7 +455,8 @@ remote func on_server_joined(this_map, mode: Gamemode, playercount: int, current
 		if player != selfid:
 			create_player_first_time(player)
 
-func join_server(username = OS.get_environment("USERNAME"), this_ip = default_ip):
+func join_server(username = OS.get_environment("USERNAME"), this_ip: String = default_ip, this_port: int = default_port):
+	_enable_3d()
 	if peer != null:
 		peer.close_connection()
 	#yes this is hella redundant
@@ -447,7 +466,7 @@ func join_server(username = OS.get_environment("USERNAME"), this_ip = default_ip
 	advertisement_timer.set_wait_time(advertisement_interval)
 	
 	peer = NetworkedMultiplayerENet.new()
-	peer.create_client(this_ip, default_port)
+	peer.create_client(this_ip, this_port)
 	get_tree().set_network_peer(peer)
 	peer.connect("connection_succeeded", self, "_on_connection_succeeded")
 	peer.connect("connection_failed", self, "_on_connection_failed")
@@ -460,6 +479,7 @@ func _on_connection_succeeded():
 
 func _on_connection_failed():
 	print("connection failed")
+	advertisement_timer.set_paused(false)
 
 func _on_server_disconnected():
 	print("SERVER DISCONNECTED")
@@ -468,7 +488,6 @@ func _on_server_disconnected():
 # yep its basically the same from the rest
 func _disconnect_from_server():
 	print("disconnecting from server...")
-	peer.close_connection()
 	return_to_testgd()
 
 remote func _on_update_recieved(authticknum: int, authplist: Dictionary):
@@ -476,7 +495,7 @@ remote func _on_update_recieved(authticknum: int, authplist: Dictionary):
 	if authticknum != current_tick_num:
 		pass
 		#do something, since alarm bells should be ringing everywhere
-	append_to_history(authtick)
+	append_to_history(authtick.export_tick())
 	apply_tick(authtick)
 	rpc_unreliable_id(1, "client_update", generate_info(selfid), current_tick_num)
 
@@ -514,7 +533,7 @@ func _physics_process(delta):
 			print(event)
 		node_events.clear()
 		rpc_unreliable("_on_update_recieved", this_tick.ticknum, this_tick.players)
-		append_to_history(this_tick)
+		append_to_history(this_tick.export_tick())
 		pause_menu.update_player_readouts()
 
 remote func client_update(data: Dictionary, current_tick: int):
@@ -535,6 +554,7 @@ func _correct_player_location(player: int):
 	var difference: Vector3 = (playerlist[player].global_transform.origin - player_past.position).abs()
 	if difference.x > max_dist || difference.y > max_dist || difference.z > max_dist:
 		playerlist[player].global_transform.origin = player_past.position
+		playerlist[player].velocity = player_past.velocity
 
 #player ping funcs
 
@@ -568,13 +588,19 @@ remote func _calculate_ping(id: int):
 		print("recalculating info")
 		var new_ticks_behind = recalculate_ticks_behind(newping)
 		# im setting these from unreliables to plain rsets for a bit. maybe change them back. we'll see.
-		rset_id(id, "number_of_ticks_behind", new_ticks_behind)
-		rset_id(id, "max_dist_air", recalculate_max_dist(default_max_dist_air, new_ticks_behind))
-		rset_id(id, "max_dist_floor", recalculate_max_dist(default_max_dist_floor, new_ticks_behind))
+		rset_unreliable_id(id, "number_of_ticks_behind", new_ticks_behind)
+		rset_unreliable_id(id, "max_dist_air", recalculate_max_dist(default_max_dist_air, new_ticks_behind))
+		rset_unreliable_id(id, "max_dist_floor", recalculate_max_dist(default_max_dist_floor, new_ticks_behind))
 	rset_unreliable_id(id, "myping", player_pings[id])
 	timer.disconnect("timeout", self, "_on_ping_timeout")
 	timer.connect("timeout", self, "_ping_player", [id], 4)
 	rset_unreliable("player_pings", player_pings)
+
+func manually_set_ticks_behind(id: int, new_ticks_behind: int):
+	print("setting player %s ticks behind to %s"%[id, new_ticks_behind])
+	rset_id(id, "number_of_ticks_behind", new_ticks_behind)
+	rset_id(id, "max_dist_air", recalculate_max_dist(default_max_dist_air, new_ticks_behind))
+	rset_id(id, "max_dist_floor", recalculate_max_dist(default_max_dist_floor, new_ticks_behind))
 
 #depreciated since it's now an rset func directly from _calculate_ping
 #remote func _get_my_ping(ping: int):
@@ -590,8 +616,7 @@ func _on_ping_timeout(id: int):
 func _on_server_button_xd_pressed():
 	_create_server("res://testing folder/network test map.tscn", Gamemode.new(), 10, default_port, default_browser_port, default_local_browser_port, $test_menu/LocalChecker.is_pressed())
 	OS.set_window_title("Quack - SERVER")
-	if get_tree().root.world.get_fallback_environment() != get_tree().root.world.get_environment():
-		get_tree().root.world.set_environment(get_tree().root.world.get_fallback_environment())
+	_enable_3d()
 
 
 func _on_client_button_xd_pressed():
@@ -655,7 +680,7 @@ func _on_quit_pressed():
 
 
 func _on_back_to_main_pressed():
-	get_tree().change_scene("res://interface/Menus/developer main menu.tscn")
+	get_tree().change_scene("res://interface/Menus/Main Menu.tscn")
 
 
 # local server browser stuff
@@ -763,17 +788,20 @@ func _shut_down_server():
 	print("disconnecting peers...")
 #	for player in playerlist:
 #		peer.disconnect_peer(player)
-	peer.close_connection()
 	return_to_testgd()
 
 func return_to_testgd():
+	print("dumping replay...")
+#	print(history)
+#	print(history.tick_history.size())
+#	print(var2str(history))
+	_dump_replay(history)
+	peer.close_connection()
 	$test_menu.show()
 	print("freeing map from memory...")
 	map.queue_free()
 	print("resetting ticknum")
 	current_tick_num = 0
-	print("dumping replay...")
-	_dump_replay(history)
 	print("clearing tick history")
 	history = null
 	print("clearing playerlist")
@@ -783,20 +811,27 @@ func return_to_testgd():
 	print("freeing pause menu from memory...")
 	pause_menu.queue_free()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().root.set_disable_3d(true)
+	OS.set_window_title("Quack (DEBUG)")
 
 var selfpeer: NetworkedMultiplayerENet
 
 func _on_host_button_xd_pressed():
 	_create_server("res://testing folder/network test map.tscn", Gamemode.new(), 10, default_port, default_browser_port, default_local_browser_port, $test_menu/LocalChecker.is_pressed())
 	OS.set_window_title("Quack - HOST")
-	if get_tree().root.world.get_fallback_environment() != get_tree().root.world.get_environment():
-		get_tree().root.world.set_environment(get_tree().root.world.get_fallback_environment())
+	_enable_3d()
 
 
-# this doesnt seem to help all that much. but, hey. we'll take what we can get.
+# doesn't seem to be perfect, but turning off 3D helps a ton reducing 1060 GPU
+# usage to 2%
 func _on_headless_button_xd_pressed():
 	_create_server("res://testing folder/network test map.tscn", Gamemode.new(), 10, default_port, default_browser_port, default_local_browser_port, $test_menu/LocalChecker.is_pressed())
 	OS.set_window_title("Quack - SERVER")
 	get_tree().root.world.set_environment(load("res://testing folder/headless_environment.tres"))
-	get_tree().root.set_disable_3d(true)
 	pause_menu.show()
+	pause_menu.get_child(0).color = Color("21667c")
+
+func _enable_3d():
+	if get_tree().root.world.get_fallback_environment() != get_tree().root.world.get_environment():
+		get_tree().root.world.set_environment(get_tree().root.world.get_fallback_environment())
+	get_tree().root.set_disable_3d(false)

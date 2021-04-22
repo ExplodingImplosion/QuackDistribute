@@ -41,7 +41,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="server Info Container"]
-margin_right = 672.0
+margin_right = 640.0
 margin_bottom = 52.0
 custom_fonts/font = ExtResource( 2 )
 text = "Server Info:"
@@ -52,7 +52,7 @@ __meta__ = {
 
 [node name="tickrate container" type="HBoxContainer" parent="server Info Container"]
 margin_top = 72.0
-margin_right = 672.0
+margin_right = 640.0
 margin_bottom = 124.0
 custom_constants/separation = 50
 __meta__ = {
@@ -83,7 +83,7 @@ __meta__ = {
 
 [node name="delta time container" type="HBoxContainer" parent="server Info Container"]
 margin_top = 144.0
-margin_right = 672.0
+margin_right = 640.0
 margin_bottom = 196.0
 custom_constants/separation = 50
 __meta__ = {
@@ -115,7 +115,7 @@ __meta__ = {
 
 [node name="IP container" type="HBoxContainer" parent="server Info Container"]
 margin_top = 216.0
-margin_right = 672.0
+margin_right = 640.0
 margin_bottom = 268.0
 custom_constants/separation = 50
 __meta__ = {
@@ -146,7 +146,7 @@ __meta__ = {
 
 [node name="Port container" type="HBoxContainer" parent="server Info Container"]
 margin_top = 288.0
-margin_right = 672.0
+margin_right = 640.0
 margin_bottom = 340.0
 custom_constants/separation = 50
 __meta__ = {
@@ -177,7 +177,7 @@ __meta__ = {
 
 [node name="Browser port container" type="HBoxContainer" parent="server Info Container"]
 margin_top = 360.0
-margin_right = 672.0
+margin_right = 640.0
 margin_bottom = 412.0
 custom_constants/separation = 50
 __meta__ = {
@@ -208,7 +208,7 @@ __meta__ = {
 
 [node name="Local\? container" type="HBoxContainer" parent="server Info Container"]
 margin_top = 432.0
-margin_right = 672.0
+margin_right = 640.0
 margin_bottom = 484.0
 custom_constants/separation = 50
 __meta__ = {
@@ -241,7 +241,7 @@ __meta__ = {
 "Online Readouts",
 ]]
 margin_top = 504.0
-margin_right = 672.0
+margin_right = 640.0
 margin_bottom = 556.0
 custom_constants/separation = 50
 __meta__ = {
@@ -274,7 +274,7 @@ __meta__ = {
 "Online Readouts",
 ]]
 margin_top = 576.0
-margin_right = 672.0
+margin_right = 640.0
 margin_bottom = 628.0
 custom_constants/separation = 50
 __meta__ = {
@@ -658,6 +658,31 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="Ticks Behind Container" type="HBoxContainer" parent="player Info Container"]
+margin_top = 576.0
+margin_right = 640.0
+margin_bottom = 638.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="button" type="ToolButton" parent="player Info Container/Ticks Behind Container"]
+margin_right = 385.0
+margin_bottom = 62.0
+custom_fonts/font = ExtResource( 2 )
+text = "Set Ticks Behind"
+
+[node name="setter" type="LineEdit" parent="player Info Container/Ticks Behind Container"]
+margin_left = 435.0
+margin_right = 589.0
+margin_bottom = 62.0
+custom_fonts/font = ExtResource( 2 )
+text = "1"
+align = 1
+placeholder_text = "ticks"
+
 [node name="Server actions container" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -732,6 +757,9 @@ __meta__ = {
 "_editor_description_": ""
 }
 [connection signal="pressed" from="Players List/Reset Camera Option" to="." method="_on_camera_reset"]
+[connection signal="pressed" from="player Info Container/Ticks Behind Container/button" to="." method="_on_ticks_behind_confirmed"]
+[connection signal="text_changed" from="player Info Container/Ticks Behind Container/setter" to="." method="_on_ticks_behind_changed"]
+[connection signal="text_entered" from="player Info Container/Ticks Behind Container/setter" to="." method="_on_ticks_behind_confirmed"]
 [connection signal="pressed" from="Server actions container/Dump Replay" to="." method="_on_Dump_Replay_pressed"]
 [connection signal="pressed" from="Server actions container/Disconnect Current Player" to="." method="_on_Disconnect_Current_Player_pressed"]
 [connection signal="pressed" from="Server actions container/Shut Down server" to="." method="_on_Shut_Down_server_pressed"]

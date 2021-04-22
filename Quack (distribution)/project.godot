@@ -12,12 +12,17 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "BaseWeapon",
 "language": "GDScript",
-"path": "res://Weapons/Base Weapon.gd"
+"path": "res://Gameplay/Weapons/Base Weapon.gd"
 }, {
 "base": "Timer",
 "class": "Gamemode",
 "language": "GDScript",
 "path": "res://Gamemodes/Default.gd"
+}, {
+"base": "Control",
+"class": "Menu",
+"language": "GDScript",
+"path": "res://addons/Menu.gd"
 }, {
 "base": "Node",
 "class": "input_list",
@@ -27,24 +32,27 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "BaseWeapon": "",
 "Gamemode": "",
+"Menu": "",
 "input_list": ""
 }
 
 [application]
 
 config/name="Quack"
-run/main_scene="res://interface/Menus/developer main menu.tscn"
+run/main_scene="res://interface/Menus/Main Menu.tscn"
+boot_splash/image="res://interface/garbage.png"
 boot_splash/bg_color=Color( 0.0352941, 1, 0.705882, 1 )
 config/icon="res://icon.png"
 
 [audio]
 
+default_bus_layout="res://Assets/Audio/default_bus_layout.tres"
 mix_rate=48000
 
 [autoload]
 
 settings="*res://userdata/settings.gd"
-Audio_Manager="*res://Audio/Audio Manager.gd"
+Audio_Manager="*res://Assets/Audio/Audio Manager.gd"
 preloader="*res://preloader singleton.gd"
 
 [display]
@@ -55,9 +63,10 @@ window/vsync/use_vsync=false
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
-[editor_plugins]
+[global]
 
-enabled=PoolStringArray(  )
+splash=false
+port=false
 
 [importer_defaults]
 
@@ -1212,7 +1221,7 @@ meleeweapon={
 }
 grenade={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":71,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":67,"unicode":0,"echo":false,"script":null)
  ]
 }
 crouch={
@@ -1232,7 +1241,7 @@ walk={
 }
 drop={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":67,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":71,"unicode":0,"echo":false,"script":null)
  ]
 }
 interact={
@@ -1257,4 +1266,4 @@ common/physics_jitter_fix=0.0
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://Assets/Environments/default_env.tres"

@@ -31,8 +31,8 @@ export(int, 1, 20) var player_limit = 10
 #defines how many spectators can watch the game at once
 export(int, 0, 20) var spectator_limit = 2
 
-export var player_gun_1: String = "M4"
-export var player_gun_2: String = "1911"
+export(String, "Base Weapon", "M4", "AK", "1911") var player_gun_1: String = "M4"
+export(String, "Base Weapon", "M4", "AK", "1911") var player_gun_2: String = "1911"
 
 #sets stuff correctly blah blah blah
 func _ready():

@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Gameplay/Weapons/Base Weapon.tscn" type="PackedScene" id=1]
+
+
+[node name="G36C" instance=ExtResource( 1 )]
+fire_rate = 0.08
+magsize = 30
+reload_speed = 3.5
+dmg = 33
+vrecoil = 10.0
+hrecoil = 6.0
+aim_vrecoil = 8.0
+aim_hrecoil = 4.0
+vrecoil_apex = 5
+max_vrecoil = 1.5
+curve_width = 1.8
+movement_stability = 0.6
+aim_movement_stability = 0.75
+weight = 0.125
+aim_weight = 0.5
+price = 2500
+caliber = 1

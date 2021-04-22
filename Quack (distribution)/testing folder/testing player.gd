@@ -78,7 +78,6 @@ func _process(delta: float):
 		sim_with_inputs(delta)
 	else:
 		simulate(inputs.inputs, inputs.input_angle, delta)
-	
 # maybe this should go in the test.gd script so that on servers, players are
 # 100% confirmed simulated BEFORE the tick gets processed
 func _physics_process(delta: float):
@@ -196,6 +195,8 @@ func sim_with_inputs(delta: float):
 
 # I think this needs to get changed, since I'm pretty sure that currently this
 # will cause the client to change LITERALLY EVERYONE's aim on their side
+# UPDATE: well now it doesn't but thats just cuz of the is_network_master() thing.
+# maybe this is fixable by turning on/off the set_process_input bit.
 func _input(event):
 	if is_network_master() and  event is InputEventMouseMotion:
 		_aim(-event.relative.y  * sens, -event.relative.x * sens)
