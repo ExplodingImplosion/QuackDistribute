@@ -298,4 +298,4 @@ nodes/shoot2/node = SubResource( 8 )
 nodes/shoot2/position = Vector2( -100, 500 )
 "nodes/weapon state/node" = SubResource( 64 )
 "nodes/weapon state/position" = Vector2( -300, 140 )
-node_connections = [ "output", 0, "add shot 2", "add shot 2", 0, "add shot 1", "add shot 2", 1, "shoot gun 2", "shoot gun", 0, "blank1", "shoot gun", 1, "shoot", "shoot gun 2", 0, "blank2", "shoot gun 2", 1, "shoot2", "add shot 1", 0, "weapon state", "add shot 1", 1, "shoot gun" ]
+node_connections = [ "output", 0, "add shot 2", "add shot 2", 0, "add shot 1", "add shot 2", 1, "shoot gun 2", "shoot gun", 0, "blank1", "shoot gun", 1, "shoot", "add shot 1", 0, "weapon state", "add shot 1", 1, "shoot gun", "shoot gun 2", 0, "blank2", "shoot gun 2", 1, "shoot2" ]
