@@ -1,0 +1,51 @@
+[gd_resource type="AnimationNodeBlendSpace2D" load_steps=10 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "origin"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "aim_up"
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "aim_up_right"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "aim_up_left"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "aim_down_left"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "aim_down"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "aim_down_right"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "aim_left"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "aim_right"
+
+[resource]
+auto_triangles = false
+blend_point_0/node = SubResource( 1 )
+blend_point_0/pos = Vector2( 0, 0 )
+blend_point_1/node = SubResource( 2 )
+blend_point_1/pos = Vector2( 0, 1 )
+blend_point_2/node = SubResource( 3 )
+blend_point_2/pos = Vector2( 1, 1 )
+blend_point_3/node = SubResource( 4 )
+blend_point_3/pos = Vector2( -1, 1 )
+blend_point_4/node = SubResource( 5 )
+blend_point_4/pos = Vector2( -1, -1 )
+blend_point_5/node = SubResource( 6 )
+blend_point_5/pos = Vector2( 0, -1 )
+blend_point_6/node = SubResource( 7 )
+blend_point_6/pos = Vector2( 1, -1 )
+blend_point_7/node = SubResource( 8 )
+blend_point_7/pos = Vector2( -1, 0 )
+blend_point_8/node = SubResource( 9 )
+blend_point_8/pos = Vector2( 1, 0 )
+triangles = PoolIntArray( 0, 1, 7, 1, 3, 7, 0, 5, 7, 4, 5, 7, 0, 1, 8, 1, 2, 8, 0, 5, 8, 5, 6, 8 )
+snap = Vector2( 1, 1 )

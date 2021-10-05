@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Materials/Dev/grid.tres" type="Material" id=1]
+[ext_resource path="res://Gameplay/Gameplay Objects/Map.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 2 )
+icon = ExtResource( 3 )
+max_players = 10
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
+use_collision = true
+width = 100.0
+depth = 100.0
+material = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CSGPolygon" type="CSGPolygon" parent="CSGCombiner"]
+transform = Transform( -3.25841e-07, 0, 2, 0, 1, 0, -1, 0, -1.62921e-07, 1, 0.5, -7.9 )
+polygon = PoolVector2Array( -2.05, 0, 0, 1, 5.2, 1, 5.25, 0 )
+
+[node name="CSGPolygon2" type="CSGPolygon" parent="CSGCombiner"]
+transform = Transform( -3.25841e-07, 0, 2, 0, 2.2, 0, -1, 0, -1.62921e-07, -4, 0.5, -7.9 )
+polygon = PoolVector2Array( -2.05, 0, 0, 1, 5.2, 1, 5.2, 0 )
+
+[node name="CSGPolygon3" type="CSGPolygon" parent="CSGCombiner"]
+transform = Transform( 6.37373e-06, 0, -2, 0, 2.2, 0, 4.42563, 0, 5.42524e-05, -6, 0.5, -36.1 )
+polygon = PoolVector2Array( -2.05, 0, 0, 1, 5.2, 1, 5.2, 0 )
+
+[node name="Perspective Overview Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.965926, 0.25882, 0, -0.25882, 0.965926, 0, 6.3, 4.708 )

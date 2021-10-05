@@ -1,0 +1,300 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://interface/fonts/Montserrat-ExtraBold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://interface/fonts/montserrat_eb_48.tres" type="DynamicFont" id=2]
+[ext_resource path="res://interface/Menus/Audio Settings Menu.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[node name="Audio Settings" type="VBoxContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -448.0
+margin_top = -412.0
+margin_right = 448.0
+margin_bottom = 488.0
+custom_constants/separation = 20
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Title" type="Label" parent="."]
+margin_right = 908.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 1 )
+text = "Audio Settings"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="HSeparator" type="HSeparator" parent="."]
+margin_top = 80.0
+margin_right = 908.0
+margin_bottom = 100.0
+custom_styles/separator = SubResource( 2 )
+custom_constants/separation = 20
+
+[node name="Audio Settings Scroller" type="ScrollContainer" parent="."]
+margin_top = 120.0
+margin_right = 908.0
+margin_bottom = 900.0
+rect_min_size = Vector2( 896, 780 )
+mouse_filter = 1
+scroll_horizontal_enabled = false
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Audio Settings Container" type="VBoxContainer" parent="Audio Settings Scroller"]
+margin_right = 896.0
+margin_bottom = 780.0
+rect_min_size = Vector2( 896, 780 )
+custom_constants/separation = 20
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Master Volume Title" type="Label" parent="Audio Settings Scroller/Audio Settings Container"]
+margin_right = 896.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+text = "Master Volume"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Master Volume Container" type="HBoxContainer" parent="Audio Settings Scroller/Audio Settings Container"]
+margin_top = 72.0
+margin_right = 896.0
+margin_bottom = 124.0
+custom_constants/separation = 50
+alignment = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Master Volume Slider" type="HSlider" parent="Audio Settings Scroller/Audio Settings Container/Master Volume Container"]
+margin_left = 213.0
+margin_right = 513.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 300, 50 )
+value = 100.0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Master Volume Readout" type="Label" parent="Audio Settings Scroller/Audio Settings Container/Master Volume Container"]
+margin_left = 563.0
+margin_right = 683.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 120, 0 )
+custom_fonts/font = ExtResource( 2 )
+text = "100"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="SFX Volume Title" type="Label" parent="Audio Settings Scroller/Audio Settings Container"]
+margin_top = 144.0
+margin_right = 896.0
+margin_bottom = 196.0
+custom_fonts/font = ExtResource( 2 )
+text = "SFX Volume"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="SFX Volume" type="HBoxContainer" parent="Audio Settings Scroller/Audio Settings Container"]
+margin_top = 216.0
+margin_right = 896.0
+margin_bottom = 268.0
+custom_constants/separation = 50
+alignment = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="SFX Volume Slider" type="HSlider" parent="Audio Settings Scroller/Audio Settings Container/SFX Volume"]
+margin_left = 213.0
+margin_right = 513.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 300, 50 )
+value = 100.0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="SFX Volume Readout" type="Label" parent="Audio Settings Scroller/Audio Settings Container/SFX Volume"]
+margin_left = 563.0
+margin_right = 683.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 120, 0 )
+custom_fonts/font = ExtResource( 2 )
+text = "100"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Music Volume Title" type="Label" parent="Audio Settings Scroller/Audio Settings Container"]
+margin_top = 288.0
+margin_right = 896.0
+margin_bottom = 340.0
+custom_fonts/font = ExtResource( 2 )
+text = "Music Volume"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Music Volume" type="HBoxContainer" parent="Audio Settings Scroller/Audio Settings Container"]
+margin_top = 360.0
+margin_right = 896.0
+margin_bottom = 412.0
+custom_constants/separation = 50
+alignment = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Music Slider" type="HSlider" parent="Audio Settings Scroller/Audio Settings Container/Music Volume"]
+margin_left = 213.0
+margin_right = 513.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 300, 50 )
+value = 100.0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Music Readout" type="Label" parent="Audio Settings Scroller/Audio Settings Container/Music Volume"]
+margin_left = 563.0
+margin_right = 683.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 120, 0 )
+custom_fonts/font = ExtResource( 2 )
+text = "100"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Voice Input Title" type="Label" parent="Audio Settings Scroller/Audio Settings Container"]
+margin_top = 432.0
+margin_right = 896.0
+margin_bottom = 484.0
+custom_fonts/font = ExtResource( 2 )
+text = "Voice Input Level"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Voice Input Container" type="HBoxContainer" parent="Audio Settings Scroller/Audio Settings Container"]
+margin_top = 504.0
+margin_right = 896.0
+margin_bottom = 556.0
+custom_constants/separation = 50
+alignment = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Voice Input Slider" type="HSlider" parent="Audio Settings Scroller/Audio Settings Container/Voice Input Container"]
+margin_left = 213.0
+margin_right = 513.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 300, 50 )
+value = 100.0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Voice Input Readout" type="Label" parent="Audio Settings Scroller/Audio Settings Container/Voice Input Container"]
+margin_left = 563.0
+margin_right = 683.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 120, 0 )
+custom_fonts/font = ExtResource( 2 )
+text = "100"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Player Voice Title" type="Label" parent="Audio Settings Scroller/Audio Settings Container"]
+margin_top = 576.0
+margin_right = 896.0
+margin_bottom = 628.0
+custom_fonts/font = ExtResource( 2 )
+text = "Player Voice Volume"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Player Voice Contianer" type="HBoxContainer" parent="Audio Settings Scroller/Audio Settings Container"]
+margin_top = 648.0
+margin_right = 896.0
+margin_bottom = 700.0
+custom_constants/separation = 50
+alignment = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Player Voice Slider" type="HSlider" parent="Audio Settings Scroller/Audio Settings Container/Player Voice Contianer"]
+margin_left = 213.0
+margin_right = 513.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 300, 50 )
+value = 100.0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Player Voice Readout" type="Label" parent="Audio Settings Scroller/Audio Settings Container/Player Voice Contianer"]
+margin_left = 563.0
+margin_right = 683.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 120, 0 )
+custom_fonts/font = ExtResource( 2 )
+text = "100"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Menu Feedback Checker" type="CheckBox" parent="Audio Settings Scroller/Audio Settings Container"]
+margin_top = 720.0
+margin_right = 896.0
+margin_bottom = 780.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 1, 0.858824, 1 )
+custom_colors/font_color_pressed = Color( 0.686275, 0, 1, 1 )
+text = "Audible Menu Feedback"
+align = 1
+expand_icon = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[connection signal="value_changed" from="Audio Settings Scroller/Audio Settings Container/Master Volume Container/Master Volume Slider" to="." method="_on_Master_Volume_Slider_value_changed"]
+[connection signal="value_changed" from="Audio Settings Scroller/Audio Settings Container/SFX Volume/SFX Volume Slider" to="." method="_on_SFX_Volume_Slider_value_changed"]
+[connection signal="value_changed" from="Audio Settings Scroller/Audio Settings Container/Music Volume/Music Slider" to="." method="_on_Music_Slider_value_changed"]
+[connection signal="value_changed" from="Audio Settings Scroller/Audio Settings Container/Voice Input Container/Voice Input Slider" to="." method="_on_Voice_Input_Slider_value_changed"]
+[connection signal="value_changed" from="Audio Settings Scroller/Audio Settings Container/Player Voice Contianer/Player Voice Slider" to="." method="_on_Player_Voice_Slider_value_changed"]
+[connection signal="toggled" from="Audio Settings Scroller/Audio Settings Container/Menu Feedback Checker" to="." method="_on_Menu_Feedback_Checker_toggled"]

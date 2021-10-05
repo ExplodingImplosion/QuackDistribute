@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Gamemodes/Gamemode.gd" type="Script" id=1]
+
+[node name="Game Timer" type="Timer"]
+one_shot = true
+script = ExtResource( 1 )
+
+[connection signal="timeout" from="." to="." method="_on_game_timer_timeout"]
+[connection signal="tree_entered" from="." to="." method="on_tree_entered"]

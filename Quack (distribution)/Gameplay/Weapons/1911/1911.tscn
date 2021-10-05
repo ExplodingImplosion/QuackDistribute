@@ -1,0 +1,114 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Gameplay/Weapons/Base Weapon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/3D/Weapons/1911/1911 Skeleton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Animations/Weapons/1911/Animations.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Materials/Weapons/Weapon Doohickey.tres" type="Material" id=4]
+[ext_resource path="res://Assets/Audio/SFX/Gunshots/Longarm shot v3.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Materials/Weapons/Black Metal.tres" type="Material" id=6]
+[ext_resource path="res://Assets/Materials/Weapons/Gold plate.tres" type="Material" id=7]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+
+[sub_resource type="Animation" id=2]
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Rotational Parent:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/1/type = "transform"
+tracks/1/path = NodePath("Rotational Parent/1911 Skeleton")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray(  )
+
+[sub_resource type="Animation" id=3]
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Rotational Parent:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/1/type = "transform"
+tracks/1/path = NodePath("Rotational Parent/1911 Skeleton")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray(  )
+
+[node name="1911" instance=ExtResource( 1 )]
+fire_rate = 0.15
+magsize = 8
+reload_speed = 2.75
+chamber_time = 2.0
+dmg = 32
+hs_mult = 4
+fire_type = 1
+vrecoil = 10.0
+hrecoil = 12.0
+aim_vrecoil = 5.0
+hrecoil_freq = 0.67
+vrecoil_apex = 2.0
+max_vrecoil = 3.0
+curve_width = 4.0
+firing_stability = 0.7
+movement_stability = 0.9
+aim_firing_stability = 0.75
+aim_movement_stability = 0.95
+tilt_factor = 2.0
+weight = 0.05
+aim_weight = 0.4
+draw_time = 0.75
+price = 400
+caliber = 4
+sound = ExtResource( 5 )
+skeleton_skin = "1911 Skin"
+skeleton_path = NodePath("Rotational Parent/1911 Skeleton")
+
+[node name="tree" parent="." index="2"]
+anim_player = NodePath("../Animator")
+"parameters/Weapon State/playback" = SubResource( 1 )
+
+[node name="Rotational Parent" parent="." index="3"]
+transform = Transform( -0.01, 0, -8.74228e-10, 0, 0.01, 0, 8.74228e-10, 0, -0.01, 0.0480442, -0.0465893, -0.12712 )
+
+[node name="1911 Skeleton" parent="Rotational Parent" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.80442, 4.65893, -12.712 )
+bones/58/bound_children = [ NodePath("Mag Spawn") ]
+
+[node name="1911 Model" parent="Rotational Parent/1911 Skeleton" index="0"]
+material/0 = ExtResource( 6 )
+material/1 = ExtResource( 4 )
+material/2 = ExtResource( 4 )
+material/3 = ExtResource( 7 )
+
+[node name="Mag Spawn" type="BoneAttachment" parent="Rotational Parent/1911 Skeleton" index="1"]
+transform = Transform( 0.993449, 0.113367, -0.0143762, -0.113367, 0.9619, -0.248791, -0.0143762, 0.248791, 0.968451, -4.92261, -6.58811, 11.4769 )
+bone_name = "mag"
+
+[node name="ADS Shot Offset Reference" type="Position3D" parent="Rotational Parent" index="1"]
+transform = Transform( -0.01, 0, -3.89414e-09, 0, 0.01, 0, 3.89414e-09, 0, -0.01, 0, 0, -0.12 )
+
+[node name="Animator" parent="." index="5" instance=ExtResource( 3 )]
+anims/blank = SubResource( 2 )
+"anims/draw 3" = SubResource( 3 )
+
+[editable path="Rotational Parent/1911 Skeleton"]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Animations/Weapon Animation Tree.tres" type="AnimationNodeBlendTree" id=1]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+
+[node name="tree" type="AnimationTree"]
+tree_root = ExtResource( 1 )
+"parameters/Add First Shot/active" = false
+"parameters/Add Second Shot/active" = false
+"parameters/Weapon State/playback" = SubResource( 1 )
