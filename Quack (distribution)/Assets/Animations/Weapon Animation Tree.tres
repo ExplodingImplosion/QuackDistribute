@@ -1,0 +1,177 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=42 format=2]
+
+[sub_resource type="AnimationNodeOneShot" id=1]
+filters = [ "M4 Skeleton:body", "M4 Skeleton:bolt", "M4 Skeleton:boltrelease", "M4 Skeleton:bullet", "M4 Skeleton:bullets", "M4 Skeleton:charginghandle", "M4 Skeleton:dustcover", "M4 Skeleton:foregrip", "M4 Skeleton:handguard_grip", "M4 Skeleton:mag", "M4 Skeleton:magretainer", "M4 Skeleton:reddot", "M4 Skeleton:selector", "Rotational Parent/1911 Skeleton:hammer", "Rotational Parent/1911 Skeleton:l_wrist", "Rotational Parent/1911 Skeleton:mag", "Rotational Parent/1911 Skeleton:main", "Rotational Parent/1911 Skeleton:r_index_low", "Rotational Parent/1911 Skeleton:r_index_mid", "Rotational Parent/1911 Skeleton:r_index_tip", "Rotational Parent/1911 Skeleton:r_middle_low", "Rotational Parent/1911 Skeleton:r_middle_mid", "Rotational Parent/1911 Skeleton:r_middle_tip", "Rotational Parent/1911 Skeleton:r_pinky_low", "Rotational Parent/1911 Skeleton:r_pinky_mid", "Rotational Parent/1911 Skeleton:r_pinky_tip", "Rotational Parent/1911 Skeleton:r_ring_low", "Rotational Parent/1911 Skeleton:r_ring_mid", "Rotational Parent/1911 Skeleton:r_ring_tip", "Rotational Parent/1911 Skeleton:r_thumb_low", "Rotational Parent/1911 Skeleton:r_thumb_mid", "Rotational Parent/1911 Skeleton:r_thumb_tip", "Rotational Parent/1911 Skeleton:r_wrist", "Rotational Parent/1911 Skeleton:slide", "Rotational Parent/1911 Skeleton:trigger", "Rotational Parent/M4 Skeleton:body", "Rotational Parent/M4 Skeleton:bolt", "Rotational Parent/M4 Skeleton:boltrelease", "Rotational Parent/M4 Skeleton:bullet", "Rotational Parent/M4 Skeleton:bullets", "Rotational Parent/M4 Skeleton:charginghandle", "Rotational Parent/M4 Skeleton:dustcover", "Rotational Parent/M4 Skeleton:foregrip", "Rotational Parent/M4 Skeleton:handguard_grip", "Rotational Parent/M4 Skeleton:l_wrist", "Rotational Parent/M4 Skeleton:mag", "Rotational Parent/M4 Skeleton:magretainer", "Rotational Parent/M4 Skeleton:reddot", "Rotational Parent/M4 Skeleton:selector", "Rotational Parent/Offset/M4 Skeleton:body", "Rotational Parent/Offset/M4 Skeleton:bolt", "Rotational Parent/Offset/M4 Skeleton:boltrelease", "Rotational Parent/Offset/M4 Skeleton:bullet", "Rotational Parent/Offset/M4 Skeleton:bullets", "Rotational Parent/Offset/M4 Skeleton:charginghandle", "Rotational Parent/Offset/M4 Skeleton:dustcover", "Rotational Parent/Offset/M4 Skeleton:foregrip", "Rotational Parent/Offset/M4 Skeleton:handguard_grip", "Rotational Parent/Offset/M4 Skeleton:mag", "Rotational Parent/Offset/M4 Skeleton:magretainer", "Rotational Parent/Offset/M4 Skeleton:reddot", "Rotational Parent/Offset/M4 Skeleton:selector" ]
+fadein_time = 0.0
+fadeout_time = 0.0
+sync = true
+
+[sub_resource type="AnimationNodeOneShot" id=2]
+filters = [ "M4 Skeleton:body", "M4 Skeleton:bolt", "M4 Skeleton:boltrelease", "M4 Skeleton:bullet", "M4 Skeleton:bullets", "M4 Skeleton:charginghandle", "M4 Skeleton:dustcover", "M4 Skeleton:foregrip", "M4 Skeleton:handguard_grip", "M4 Skeleton:mag", "M4 Skeleton:magretainer", "M4 Skeleton:reddot", "M4 Skeleton:selector", "Rotational Parent/1911 Skeleton:hammer", "Rotational Parent/1911 Skeleton:l_wrist", "Rotational Parent/1911 Skeleton:mag", "Rotational Parent/1911 Skeleton:main", "Rotational Parent/1911 Skeleton:r_index_low", "Rotational Parent/1911 Skeleton:r_index_mid", "Rotational Parent/1911 Skeleton:r_index_tip", "Rotational Parent/1911 Skeleton:r_middle_low", "Rotational Parent/1911 Skeleton:r_middle_mid", "Rotational Parent/1911 Skeleton:r_middle_tip", "Rotational Parent/1911 Skeleton:r_pinky_low", "Rotational Parent/1911 Skeleton:r_pinky_mid", "Rotational Parent/1911 Skeleton:r_pinky_tip", "Rotational Parent/1911 Skeleton:r_ring_low", "Rotational Parent/1911 Skeleton:r_ring_mid", "Rotational Parent/1911 Skeleton:r_ring_tip", "Rotational Parent/1911 Skeleton:r_thumb_low", "Rotational Parent/1911 Skeleton:r_thumb_mid", "Rotational Parent/1911 Skeleton:r_thumb_tip", "Rotational Parent/1911 Skeleton:r_wrist", "Rotational Parent/1911 Skeleton:slide", "Rotational Parent/1911 Skeleton:trigger", "Rotational Parent/M4 Skeleton:body", "Rotational Parent/M4 Skeleton:bolt", "Rotational Parent/M4 Skeleton:boltrelease", "Rotational Parent/M4 Skeleton:bullet", "Rotational Parent/M4 Skeleton:bullets", "Rotational Parent/M4 Skeleton:charginghandle", "Rotational Parent/M4 Skeleton:dustcover", "Rotational Parent/M4 Skeleton:foregrip", "Rotational Parent/M4 Skeleton:handguard_grip", "Rotational Parent/M4 Skeleton:l_wrist", "Rotational Parent/M4 Skeleton:mag", "Rotational Parent/M4 Skeleton:magretainer", "Rotational Parent/M4 Skeleton:reddot", "Rotational Parent/M4 Skeleton:selector", "Rotational Parent/Offset/M4 Skeleton:body", "Rotational Parent/Offset/M4 Skeleton:bolt", "Rotational Parent/Offset/M4 Skeleton:boltrelease", "Rotational Parent/Offset/M4 Skeleton:bullet", "Rotational Parent/Offset/M4 Skeleton:bullets", "Rotational Parent/Offset/M4 Skeleton:charginghandle", "Rotational Parent/Offset/M4 Skeleton:dustcover", "Rotational Parent/Offset/M4 Skeleton:foregrip", "Rotational Parent/Offset/M4 Skeleton:handguard_grip", "Rotational Parent/Offset/M4 Skeleton:mag", "Rotational Parent/Offset/M4 Skeleton:magretainer", "Rotational Parent/Offset/M4 Skeleton:reddot", "Rotational Parent/Offset/M4 Skeleton:selector" ]
+fadein_time = 0.05
+fadeout_time = 0.05
+sync = true
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "fire"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "fire"
+
+[sub_resource type="AnimationNodeTimeScale" id=5]
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "ads_anim"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "leave_ads_anim"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "ads_pos"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "draw 2"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "draw"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "first draw"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "first draw"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "reload"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "origin"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "tacreload"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+xfade_time = 0.2
+priority = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+xfade_time = 0.2
+priority = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+xfade_time = 0.1
+priority = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+priority = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+switch_mode = 2
+xfade_time = 0.5
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+switch_mode = 2
+xfade_time = 0.5
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+xfade_time = 0.5
+
+[sub_resource type="AnimationNodeStateMachine" id=41]
+states/ADS/node = SubResource( 8 )
+states/ADS/position = Vector2( 367, -96 )
+"states/ADS Intro/node" = SubResource( 6 )
+"states/ADS Intro/position" = Vector2( 86, 34 )
+"states/ADS Outro/node" = SubResource( 7 )
+"states/ADS Outro/position" = Vector2( 367, 55 )
+states/Draw/node = SubResource( 10 )
+states/Draw/position = Vector2( 692, 216 )
+"states/Draw and Rack Bolt/node" = SubResource( 9 )
+"states/Draw and Rack Bolt/position" = Vector2( -63, 216 )
+"states/First Draw/node" = SubResource( 11 )
+"states/First Draw/position" = Vector2( 180, 216 )
+"states/Intro Animation/node" = SubResource( 12 )
+"states/Intro Animation/position" = Vector2( 367, 362 )
+states/Reload/node = SubResource( 13 )
+states/Reload/position = Vector2( 568, -43 )
+states/Rest/node = SubResource( 14 )
+states/Rest/position = Vector2( 367, 216 )
+"states/Tactical Reload/node" = SubResource( 15 )
+"states/Tactical Reload/position" = Vector2( 817, -6 )
+transitions = [ "ADS Intro", "ADS", SubResource( 16 ), "ADS", "ADS Outro", SubResource( 17 ), "ADS", "Reload", SubResource( 18 ), "ADS", "Tactical Reload", SubResource( 19 ), "ADS Intro", "ADS Outro", SubResource( 20 ), "ADS Intro", "Reload", SubResource( 21 ), "ADS Intro", "Tactical Reload", SubResource( 22 ), "ADS Outro", "Tactical Reload", SubResource( 23 ), "Rest", "Draw", SubResource( 24 ), "Draw", "Rest", SubResource( 25 ), "Rest", "Draw and Rack Bolt", SubResource( 26 ), "Draw and Rack Bolt", "Rest", SubResource( 27 ), "Rest", "ADS Intro", SubResource( 28 ), "Rest", "Reload", SubResource( 29 ), "Reload", "Rest", SubResource( 30 ), "Tactical Reload", "Rest", SubResource( 31 ), "ADS Outro", "Rest", SubResource( 32 ), "Rest", "Intro Animation", SubResource( 33 ), "Intro Animation", "Rest", SubResource( 34 ), "Rest", "First Draw", SubResource( 35 ), "First Draw", "Rest", SubResource( 36 ), "Rest", "Tactical Reload", SubResource( 37 ), "Reload", "ADS", SubResource( 38 ), "Tactical Reload", "ADS", SubResource( 39 ), "Draw", "Reload", SubResource( 40 ) ]
+start_node = "Rest"
+graph_offset = Vector2( -213, 7 )
+
+[resource]
+graph_offset = Vector2( -393, 81 )
+"nodes/Add First Shot/node" = SubResource( 1 )
+"nodes/Add First Shot/position" = Vector2( -200, 80 )
+"nodes/Add Second Shot/node" = SubResource( 2 )
+"nodes/Add Second Shot/position" = Vector2( 0, 80 )
+"nodes/First Shot/node" = SubResource( 3 )
+"nodes/First Shot/position" = Vector2( -400, 300 )
+"nodes/Second Shot/node" = SubResource( 4 )
+"nodes/Second Shot/position" = Vector2( -160, 300 )
+nodes/TimeScale/node = SubResource( 5 )
+nodes/TimeScale/position = Vector2( 200, 80 )
+"nodes/Weapon State/node" = SubResource( 41 )
+"nodes/Weapon State/position" = Vector2( -400, 80 )
+nodes/output/position = Vector2( 360, 80 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Add Second Shot", "Add First Shot", 0, "Weapon State", "Add First Shot", 1, "First Shot", "Add Second Shot", 0, "Add First Shot", "Add Second Shot", 1, "Second Shot" ]

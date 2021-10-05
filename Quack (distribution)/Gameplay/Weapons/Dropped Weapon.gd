@@ -1,4 +1,5 @@
 extends RigidBody
+class_name DroppedWeapon
 
 export(int, 0, 200) var ammo
 export(bool) var cycled
@@ -27,6 +28,5 @@ func interact(node: Node):
 	held.spawn(ammo)
 	if node.is_in_group("players"):
 		print("skrr")
-		node.add_child(held)
 		held.global_transform.origin = held.get_parent().global_transform.origin
 		queue_free()

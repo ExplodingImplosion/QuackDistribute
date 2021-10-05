@@ -1,37 +1,31 @@
-extends Control
+extends Menu
 
-#sets up quick references to buttons and such
+# sets up quick references to buttons and such
 onready var main = $main
-onready var launch_main_button = $"main/Main Button"
+onready var play_button = $"main/Play Container/Play Button"
 onready var settings_button = $"main/Settings Button"
 onready var settings_menu = $Settings
 onready var crosshair_menu = $CrosshairItems
 onready var video_settings_menu = $"Video Settings"
 onready var sens = $"Settings/Sensitivity Container/Sensitivity Readout"
-onready var plugintest = $"main/PluginLevel Button"
-
-var current_layer: Node
-
+onready var audio_menu = $"Audio Settings"
+onready var usernamecontainer = $"Username Container"
 
 func _ready():
-	var getmaxfps = settings.get_setting("Video Settings", "Frameratelimit")
-	var getfullscreen = settings.get_setting("Video Settings", "Fullscreen")
-	var getvsync = settings.get_setting("Video Settings", "EnableV-Sync")
-	Engine.set_target_fps(getmaxfps)
-	OS.set_window_fullscreen(getfullscreen)
-	OS.set_use_vsync(getvsync)
-	OS.set_window_size(settings.get_setting("Video Settings", "Resolution"))
-	current_layer = main
-	for menu in get_children():
-		menu.hide()
-	$background.show()
-	main.show()
+	var getusername: String = settings.get_setting("Account Settings", "Username")
 	var getsens = settings.get_setting("Mouse", "Sensitivity")
 	sens.text = str(getsens)
 	$"Settings/Sensitivity Container/Sensitivity Slider".set_value(getsens)
-	$"Video Settings/Max FPS container/Max FPS".set_text(str(getmaxfps))
-	$"Video Settings/Fullscreen".set_pressed(getfullscreen)
-	$"Video Settings/Enable VSync".set_pressed(getvsync)
+	$"Video Settings/Max FPS container/Max FPS".set_text(str(settings.get_setting("Video Settings", "Frameratelimit")))
+	$"Video Settings/Fullscreen Checker".set_pressed(settings.get_setting("Video Settings", "Fullscreen"))
+	$"Video Settings/VSync Checker".set_pressed(settings.get_setting("Video Settings", "EnableV-Sync"))
+	if getusername == "":
+		getusername = OS.get_environment("USERNAME")
+	$"Username Container/Username Setter".set_text(getusername)
+#	var v31 = Vector3(0,0.5,1.32)
+#	var v32 = Vector3(43, 0.24, 2.64)
+#	print(lerp(v31, v32, 0.5))
+#	print(RemotePlayer.interpolate_vector3(v31, v32, 0.5))
 #	get_tree().root.set_disable_3d(true)
 #	get_tree().root.world.set_environment(load("res://testing folder/headless_environment.tres"))
 
@@ -39,27 +33,22 @@ func _input(event):
 	if (Input.is_action_just_pressed("ui_cancel")):
 		match current_layer:
 			settings_menu:
-				_go_to_layer(main)
+				go_to_main()
 				settings.save_settings()
 			crosshair_menu:
 				_go_to_layer(settings_menu)
 			video_settings_menu:
 				_go_to_layer(settings_menu)
-
-
-func _go_to_layer(to: Node):
-	current_layer.hide()
-	to.show()
-	current_layer = to
+			audio_menu:
+				_go_to_layer(settings_menu)
 
 
 func _on_Settings_Button_pressed():
-	_go_to_layer(settings_menu)
+	leave_main(settings_menu)
 
 
 func _on_Exit_button_pressed():
-	settings.save_settings()
-	get_tree().quit()
+	Quack.quit()
 
 
 func _on_Crosshair_Settings_Button_pressed():
@@ -73,21 +62,25 @@ func _on_Testing_Button_pressed():
 	get_tree().change_scene("res://testing folder/test.tscn")
 
 
-func _on_fullscreen_toggled(button_pressed):
-	OS.set_window_fullscreen(button_pressed)
-	settings.change_setting("Video Settings", "Fullscreen", button_pressed)
-
-
 func _on_Video_Settings_Button_pressed():
 	_go_to_layer(video_settings_menu)
 
 
-func _on_Enable_VSync_toggled(button_pressed):
-	OS.set_use_vsync(button_pressed)
-	settings.change_setting("Video Settings", "EnableV-Sync", button_pressed)
+func _on_Audio_Settings_Button_pressed():
+	_go_to_layer(audio_menu)
 
 
-func _on_Max_FPS_text_changed(new_text):
-	var maxfps = int(new_text)
-	Engine.set_target_fps(maxfps)
-	settings.change_setting("Video Settings", "Frameratelimit", maxfps)
+func _on_Play_Button_pressed():
+	get_tree().change_scene("res://interface/Menus/Multiplayer Menu.tscn")
+
+func go_to_main():
+	_go_to_layer(main)
+	usernamecontainer.show()
+
+func leave_main(to: Node):
+	_go_to_layer(to)
+	usernamecontainer.hide()
+
+
+func _on_Username_Setter_text_changed(new_text: String):
+	settings.change_setting("Account Settings", "Username", new_text)

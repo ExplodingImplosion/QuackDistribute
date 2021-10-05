@@ -1,0 +1,262 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://interface/Crosshair/Crosshair.tscn" type="PackedScene" id=1]
+[ext_resource path="res://interface/fonts/montserrat_eb_52.tres" type="DynamicFont" id=3]
+[ext_resource path="res://interface/Buttons/Chat Box.tres" type="StyleBox" id=4]
+[ext_resource path="res://interface/fonts/Chat Font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://interface/HUDs/Radar.gd" type="Script" id=6]
+[ext_resource path="res://interface/HUDs/Killfeed.gd" type="Script" id=7]
+[ext_resource path="res://Maps/3v3 Arena/Radar.png" type="Texture" id=8]
+[ext_resource path="res://interface/HUDs/Player HUD.gd" type="Script" id=9]
+[ext_resource path="res://interface/HUDs/Ingame Chat.gd" type="Script" id=10]
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Crosshair" parent="." instance=ExtResource( 1 )]
+
+[node name="Health Container" type="VBoxContainer" parent="."]
+margin_left = 64.0
+margin_top = 820.0
+margin_right = 496.0
+margin_bottom = 1022.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Health Label" type="Label" parent="Health Container"]
+margin_right = 432.0
+margin_bottom = 99.0
+custom_fonts/font = ExtResource( 3 )
+text = "Health:"
+
+[node name="Health Readout" type="Label" parent="Health Container"]
+margin_top = 103.0
+margin_right = 432.0
+margin_bottom = 202.0
+custom_fonts/font = ExtResource( 3 )
+text = "100/100     "
+align = 2
+
+[node name="Ammo Container" type="VBoxContainer" parent="."]
+margin_left = 1480.0
+margin_top = 820.0
+margin_right = 1797.0
+margin_bottom = 1022.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Ammo Label" type="Label" parent="Ammo Container"]
+margin_right = 317.0
+margin_bottom = 99.0
+custom_fonts/font = ExtResource( 3 )
+text = "Ammo:"
+align = 2
+
+[node name="Ammo Readout" type="Label" parent="Ammo Container"]
+margin_top = 103.0
+margin_right = 317.0
+margin_bottom = 202.0
+custom_fonts/font = ExtResource( 3 )
+text = "30/90"
+align = 2
+
+[node name="Game Info Container" type="VBoxContainer" parent="."]
+margin_left = 706.0
+margin_right = 1214.0
+margin_bottom = 202.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Score Container" type="HBoxContainer" parent="Game Info Container"]
+margin_right = 508.0
+margin_bottom = 99.0
+alignment = 1
+
+[node name="Score 1" type="Label" parent="Game Info Container/Score Container"]
+margin_right = 200.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 200, 0 )
+custom_fonts/font = ExtResource( 3 )
+text = "0"
+align = 1
+
+[node name="Separator" type="Label" parent="Game Info Container/Score Container"]
+margin_left = 204.0
+margin_right = 304.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 100, 0 )
+custom_fonts/font = ExtResource( 3 )
+text = "-"
+align = 1
+
+[node name="Score 2" type="Label" parent="Game Info Container/Score Container"]
+margin_left = 308.0
+margin_right = 508.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 200, 0 )
+custom_fonts/font = ExtResource( 3 )
+text = "0"
+align = 1
+
+[node name="Timer Readout" type="Label" parent="Game Info Container"]
+margin_top = 99.0
+margin_right = 508.0
+margin_bottom = 198.0
+custom_fonts/font = ExtResource( 3 )
+text = "5:00"
+align = 1
+
+[node name="Radar" type="Container" parent="."]
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 384.0
+rect_clip_content = true
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Radar"]
+margin_left = 10.0
+margin_right = 608.0
+margin_bottom = 599.0
+rect_pivot_offset = Vector2( 149, 149 )
+texture = ExtResource( 8 )
+
+[node name="Killfeed" type="Container" parent="."]
+margin_left = 1456.0
+margin_top = 64.0
+margin_right = 1856.0
+margin_bottom = 512.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Chat" type="Container" parent="."]
+margin_left = 12.0
+margin_top = 616.0
+margin_right = 460.0
+margin_bottom = 824.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="Chat"]
+margin_right = 448.0
+margin_bottom = 208.0
+rect_min_size = Vector2( 448, 208 )
+custom_styles/panel = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Chat Container" type="VBoxContainer" parent="Chat"]
+margin_right = 448.0
+margin_bottom = 208.0
+rect_min_size = Vector2( 448, 0 )
+alignment = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Chat/Chat Container"]
+margin_right = 448.0
+margin_bottom = 184.0
+rect_min_size = Vector2( 436, 184 )
+scroll_horizontal_enabled = false
+
+[node name="Chat Messages" type="VBoxContainer" parent="Chat/Chat Container/ScrollContainer"]
+margin_right = 436.0
+margin_bottom = 184.0
+rect_min_size = Vector2( 436, 184 )
+alignment = 2
+
+[node name="Message Enterer" type="LineEdit" parent="Chat/Chat Container"]
+margin_top = 188.0
+margin_right = 448.0
+margin_bottom = 208.0
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
+caret_blink = true
+
+[node name="Debug Info" type="PanelContainer" parent="."]
+margin_left = 90.0
+margin_right = 339.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 0, 20 )
+custom_styles/panel = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Info Container" type="HBoxContainer" parent="Debug Info"]
+margin_right = 249.0
+margin_bottom = 25.0
+custom_constants/separation = 20
+
+[node name="FPS Container" type="HBoxContainer" parent="Debug Info/Info Container"]
+margin_right = 98.0
+margin_bottom = 25.0
+custom_constants/separation = 10
+
+[node name="FPS Label" type="Label" parent="Debug Info/Info Container/FPS Container"]
+margin_top = 2.0
+margin_right = 38.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+text = "FPS:"
+valign = 1
+
+[node name="FPS Readout" type="Label" parent="Debug Info/Info Container/FPS Container"]
+margin_left = 48.0
+margin_top = 2.0
+margin_right = 98.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 50, 0 )
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+text = "300"
+valign = 1
+
+[node name="Ping Container" type="HBoxContainer" parent="Debug Info/Info Container"]
+margin_left = 118.0
+margin_right = 249.0
+margin_bottom = 25.0
+custom_constants/separation = 10
+
+[node name="Ping Label" type="Label" parent="Debug Info/Info Container/Ping Container"]
+margin_top = 2.0
+margin_right = 41.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+text = "Ping:"
+valign = 1
+
+[node name="Ping Readout" type="Label" parent="Debug Info/Info Container/Ping Container"]
+margin_left = 51.0
+margin_top = 2.0
+margin_right = 131.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 80, 0 )
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+text = "16ms"
+valign = 1

@@ -40,20 +40,20 @@ func _ready():
 	#setting general crosshair settings
 	$CenterContainer/crosshair/MainSettings/Length/HSlider.set_value(getlength)
 	$CenterContainer/crosshair/MainSettings/Width/HSlider.set_value(getwidth)
-	$CenterContainer/crosshair/MainSettings/Opacity/HSlider.set_value(getopacity)
+	$CenterContainer/crosshair/MainSettings/Opacity/HSlider.set_value(getopacity * 100)
 	$CenterContainer/crosshair/MainSettings/Gap/HSlider.set_value(getgap)
 	$CrosshairColor/CrosshairColor.set_pick_color(getcolor)
 	
 	#setting border settings
-	$CenterContainer/crosshair/BorderSettings/BorderTrueFalse/TrueFalse.set_toggle_mode(getborder)
+	$CenterContainer/crosshair/BorderSettings/BorderTrueFalse/TrueFalse.set_pressed(getborder)
 	$CenterContainer/crosshair/BorderSettings/BorderSize/HSlider.set_value(getbsize)
-	$CenterContainer/crosshair/BorderSettings/BorderOpacity/HSlider.set_value(getbopacity)
+	$CenterContainer/crosshair/BorderSettings/BorderOpacity/HSlider.set_value(getbopacity * 100)
 	
 	#setting dot settings
-	$CenterContainer/crosshair/DotSettings/DotTrueFalse/TrueFalse.set_toggle_mode(getdot)
+	$CenterContainer/crosshair/DotSettings/DotTrueFalse/TrueFalse.set_pressed(getdot)
 	$CenterContainer/crosshair/DotSettings/DotSize/HSlider.set_value(getdsize)
-	$CenterContainer/crosshair/DotSettings/DotOpacity/HSlider.set_value(getdopacity)
-	$CenterContainer/crosshair/DotSettings/DotBorder/TrueFalse.set_toggle_mode(getdborder)
+	$CenterContainer/crosshair/DotSettings/DotOpacity/HSlider.set_value(getdopacity * 100)
+	$CenterContainer/crosshair/DotSettings/DotBorder/TrueFalse.set_pressed(getdborder)
 	$DotColor/DotColor.set_pick_color(getdcolor)
 	
 	crosshair_rep.set_position(OS.get_window_size()/4)
@@ -72,7 +72,7 @@ func _on_crosshair_width_changed(value):
 
 
 func _on_crosshair_opacity_changed(value):
-	settings.change_setting("Crosshair Settings", "Opacity", value)
+	settings.change_setting("Crosshair Settings", "Opacity", float(value / 100.0))
 	opacity.text = str(value)
 	crosshair_rep.rebuild_crosshair()
 
@@ -89,7 +89,7 @@ func _on_border_size_changed(value):
 
 
 func _on_border_opacity_changed(value):
-	settings.change_setting("Crosshair Settings", "BorderOpacity", value)
+	settings.change_setting("Crosshair Settings", "BorderOpacity", float(value / 100.0))
 	bopacity.text = str(value)
 	crosshair_rep.rebuild_crosshair()
 
@@ -106,7 +106,7 @@ func _on_dot_size_changed(value):
 
 
 func _on_dot_opacity_changed(value):
-	settings.change_setting("Crosshair Settings", "DotOpacity", value)
+	settings.change_setting("Crosshair Settings", "DotOpacity", float(value / 100.0))
 	dopacity.text = str(value)
 	crosshair_rep.rebuild_crosshair()
 

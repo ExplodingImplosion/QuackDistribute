@@ -1,15 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Gameplay/Weapons/Base Weapon.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Animations/tree.tres" type="AnimationNodeBlendTree" id=4]
+[ext_resource path="res://Assets/Animations/Weapons/M4/Animations.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/3D/Weapons/M4/M4 Skeleton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Materials/Weapons/Black Metal.tres" type="Material" id=4]
+[ext_resource path="res://Assets/Materials/Weapons/Bullet Casing.tres" type="Material" id=5]
+[ext_resource path="res://Assets/Materials/Weapons/Bronze.tres" type="Material" id=6]
+[ext_resource path="res://Assets/Materials/Weapons/Tan Weapon Attachment.tres" type="Material" id=7]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
 [node name="M4" instance=ExtResource( 1 )]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
 fire_rate = 0.087
 magsize = 30
 reload_speed = 3.1
+chamber_time = 2.7
 dmg = 33
 hs_mult = 3
 vrecoil = 10.0
@@ -17,26 +22,57 @@ hrecoil = -10.0
 aim_vrecoil = 5.0
 aim_hrecoil = -8.0
 hrecoil_freq = 4.935
-max_vrecoil = 2.0
-curve_width = 1.8
-movement_stability = 0.5
-aim_movement_stability = 0.8
+vrecoil_apex = 7.0
+max_vrecoil = 1.0
+curve_width = 1.2
+movement_stability = 0.7
+aim_movement_stability = 0.975
+tilt_factor = -1.0
 weight = 0.1
 aim_weight = 0.6
+draw_time = 1.0
 section = 3
 price = 3100
 caliber = 1
 dropped_counterpart = "Dropped M4"
+skeleton_path = NodePath("Rotational Parent/M4 Skeleton")
 
 [node name="tree" parent="." index="2"]
-tree_root = ExtResource( 4 )
-anim_player = NodePath("../M4/m4 animations")
-"parameters/add shot 1/add_amount" = 1.0
-"parameters/add shot 2/add_amount" = 1.0
-"parameters/shoot gun/active" = false
-"parameters/shoot gun 2/active" = false
-"parameters/weapon state/playback" = SubResource( 1 )
-"parameters/weapon state/aimdirs/blend_position" = 0.0
-"parameters/weapon state/aimdirs/0/blend_position" = Vector2( 0, 0 )
-"parameters/weapon state/aimdirs/1/blend_position" = Vector2( 0, 0 )
-"parameters/weapon state/aimdirs/2/blend_position" = Vector2( 0, 0 )
+anim_player = NodePath("../Animator")
+active = true
+"parameters/Weapon State/playback" = SubResource( 1 )
+
+[node name="Animator" parent="." index="3" instance=ExtResource( 2 )]
+
+[node name="Rotational Parent" parent="." index="5"]
+transform = Transform( -0.01, 0, -8.74228e-10, 0, 0.01, 0, 8.74228e-10, 0, -0.01, 0.0368643, -0.0370484, -0.0753785 )
+
+[node name="M4 Skeleton" parent="Rotational Parent" index="0" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.68643, 3.70484, -7.53785 )
+bones/64/bound_children = [ NodePath("Mag Spawn") ]
+
+[node name="M4" parent="Rotational Parent/M4 Skeleton" index="0"]
+material/0 = ExtResource( 4 )
+material/1 = ExtResource( 4 )
+material/2 = ExtResource( 4 )
+material/3 = ExtResource( 4 )
+material/4 = ExtResource( 4 )
+material/5 = ExtResource( 5 )
+material/6 = ExtResource( 6 )
+material/7 = ExtResource( 5 )
+material/8 = ExtResource( 4 )
+material/9 = ExtResource( 4 )
+material/10 = ExtResource( 4 )
+material/11 = ExtResource( 7 )
+material/12 = ExtResource( 7 )
+material/13 = ExtResource( 4 )
+material/14 = ExtResource( 4 )
+
+[node name="Mag Spawn" type="BoneAttachment" parent="Rotational Parent/M4 Skeleton" index="1"]
+transform = Transform( 1, 2.5373e-08, -1.98952e-12, -2.5373e-08, 1, -2.24153e-12, 1.98952e-12, 2.24152e-12, 1, -3.62595, -7.24684, 9.46908 )
+bone_name = "mag"
+
+[node name="ADS Shot Offset Reference" type="Position3D" parent="Rotational Parent" index="1"]
+transform = Transform( -0.01, -2.04947e-14, -3.89414e-09, -2.04947e-14, 0.01, -1.12698e-14, 3.89414e-09, -1.12698e-14, -0.01, 0.000329472, 0.0247866, -0.130073 )
+
+[editable path="Rotational Parent/M4 Skeleton"]

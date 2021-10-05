@@ -1,0 +1,120 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://interface/fonts/montserrat_eb_48.tres" type="DynamicFont" id=1]
+[ext_resource path="res://interface/Menus/Video Settings Menu.gd" type="Script" id=2]
+
+[node name="video settings container" type="VBoxContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -315.0
+margin_top = -216.0
+margin_right = 315.0
+margin_bottom = 356.0
+custom_constants/separation = 20
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 630.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 1 )
+text = "VIDEO SETTINGS"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Fullscreen Checker" type="CheckBox" parent="."]
+margin_top = 72.0
+margin_right = 630.0
+margin_bottom = 132.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 1, 0.858824, 1 )
+custom_colors/font_color_pressed = Color( 0.686275, 0, 1, 1 )
+text = "Fullscreen"
+align = 1
+expand_icon = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="VSync Checker" type="CheckBox" parent="."]
+margin_top = 152.0
+margin_right = 630.0
+margin_bottom = 212.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 1, 0.858824, 1 )
+custom_colors/font_color_pressed = Color( 0.686275, 0, 1, 1 )
+text = "Enable V-Sync"
+align = 1
+expand_icon = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Max FPS container" type="HBoxContainer" parent="."]
+margin_top = 232.0
+margin_right = 630.0
+margin_bottom = 294.0
+custom_constants/separation = 50
+alignment = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="Max FPS container"]
+margin_left = 53.0
+margin_top = 5.0
+margin_right = 372.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 120, 0 )
+custom_fonts/font = ExtResource( 1 )
+text = "Maximum FPS"
+align = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Max FPS" type="LineEdit" parent="Max FPS container"]
+margin_left = 422.0
+margin_right = 576.0
+margin_bottom = 62.0
+mouse_default_cursor_shape = 0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 1, 0.196078, 1 )
+align = 1
+max_length = 3
+caret_blink = true
+caret_blink_speed = 0.5
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Resolution drop-down" type="OptionButton" parent="."]
+margin_top = 314.0
+margin_right = 630.0
+margin_bottom = 372.0
+rect_min_size = Vector2( 630, 0 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 1, 0.858824, 1 )
+custom_colors/font_color_pressed = Color( 0.686275, 0, 1, 1 )
+text = "1920 x 1080 [16:9]"
+align = 1
+items = [ "1920 x 1080 [16:9]", null, false, 0, null, "1280 x 720  [16:9]", null, false, 1, null, "720 x 480p [3:2]", null, false, 2, null ]
+selected = 0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[connection signal="toggled" from="Fullscreen Checker" to="." method="_on_Fullscreen_Checker_toggled"]
+[connection signal="toggled" from="VSync Checker" to="." method="_on_VSync_Checker_toggled"]
+[connection signal="text_changed" from="Max FPS container/Max FPS" to="." method="_on_Max_FPS_text_changed"]
+[connection signal="item_selected" from="Resolution drop-down" to="." method="_on_Resolution_dropdown_item_selected"]

@@ -1,6 +1,6 @@
 [gd_resource type="SpatialMaterial" load_steps=2 format=2]
 
-[ext_resource path="res://3d assets/textures/dev grids/texture_09.svg" type="Texture" id=1]
+[ext_resource path="res://Assets/Raw/Textures/Dev grids/texture_09.svg" type="Texture" id=1]
 
 [resource]
 flags_world_triplanar = true

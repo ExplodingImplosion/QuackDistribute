@@ -2,7 +2,7 @@ extends Node
 
 # Plays a sound. The AudioStreamPlayer node will be added to the `parent`
 # specified as parameter.
-func play(parent: Node, stream: AudioStreamSample, volume = 0.0, max_vol = 6.0, pitch_scale = 1.0):
+func play(parent: Node, stream: AudioStreamSample, volume: float = 0.0, max_vol: float = 6.0, pitch_scale: float = 1.0):
 	var audio_stream_player = AudioStreamPlayer3D.new()
 	
 	parent.add_child(audio_stream_player)

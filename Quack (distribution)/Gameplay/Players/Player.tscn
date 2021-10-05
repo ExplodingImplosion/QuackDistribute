@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/3D/Player Models/mannequin mesh.tres" type="ArrayMesh" id=1]
+[ext_resource path="res://Gameplay/Players/Player Controller.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Animations/Viewmodel Hands Skeleton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Animations/Viewmodel Hands Skin.tres" type="Skin" id=4]
+[ext_resource path="res://Assets/3D/Player Models/Viewmodel hands.tres" type="ArrayMesh" id=5]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.5
+height = 0.89
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 0.085, 0.085, 0.25 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 2, 2, 2 )
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Collision Body" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.945, 0 )
+shape = SubResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Head" type="Spatial" parent="."]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 1.77009, 1.44999e-07 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="World Camera" type="Camera" parent="Head"]
+keep_aspect = 0
+cull_mask = 1048573
+fov = 100.0
+near = 0.01
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Beak" type="MeshInstance" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58006e-09, 0, -0.190302 )
+mesh = SubResource( 2 )
+material/0 = null
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Interactor" type="RayCast" parent="Head"]
+cast_to = Vector3( 0, 0, -3 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Viewmodel Hands" type="MeshInstance" parent="Head"]
+transform = Transform( -0.01, 0, -3.89414e-09, 0, 0.01, 0, 3.89414e-09, 0, -0.01, 0, 0, 0 )
+mesh = ExtResource( 5 )
+skin = ExtResource( 4 )
+skeleton = NodePath("../Viewmodel Hands Skeleton")
+material/0 = null
+material/1 = null
+
+[node name="Viewmodel Hands Skeleton" parent="Head" instance=ExtResource( 3 )]
+
+[node name="Third Person Model" type="MeshInstance" parent="."]
+transform = Transform( -1.67645e-07, -1.029, -4.4979e-08, 0, -4.4979e-08, 1.029, -1.029, 1.67645e-07, 7.32801e-15, 0, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 3 )
+disabled = true
+__meta__ = {
+"_editor_description_": ""
+}

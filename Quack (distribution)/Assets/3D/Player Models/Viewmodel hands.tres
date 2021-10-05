@@ -1,7 +1,6 @@
-[gd_resource type="ArrayMesh" load_steps=3 format=2]
+[gd_resource type="ArrayMesh" load_steps=2 format=2]
 
-[ext_resource path="res://3d assets/weapons/dev/gltf/m4 gltf test/t_phoenix.material" type="Material" id=1]
-[ext_resource path="res://3d assets/weapons/dev/gltf/m4 gltf test/v_hands.material" type="Material" id=2]
+[ext_resource path="res://Assets/Materials/Players/M_UE4Man_Body.material" type="Material" id=2]
 
 [resource]
 resource_name = "brokes css"
@@ -12,7 +11,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 97495,
 "index_count": 0,
-"material": ExtResource( 1 ),
+"material": ExtResource( 2 ),
 "primitive": 4,
 "skeleton_aabb": [ AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( -7.71687, -7.79255, 1.39558, 3.76692, 3.63224, 6.82032 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( -7.59319, -7.79255, 4.84185, 3.07808, 3.18012, 3.37404 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( -7.34397, -5.22882, 6.8833, 0.551563, 0.302964, 0.00830078 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 4.03914, -7.69264, 1.3962, 3.7725, 3.63078, 6.82033 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 4.61273, -7.69264, 4.84227, 3.07943, 3.18208, 3.37426 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 6.87129, -5.1083, 6.88393, 0.556423, 0.293925, 0.00825262 ) ],
 "vertex_count": 4404

@@ -14,26 +14,122 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Gameplay/Weapons/Base Weapon.gd"
 }, {
+"base": "NetworkPeer",
+"class": "Client",
+"language": "GDScript",
+"path": "res://Gameplay/Client.gd"
+}, {
+"base": "RigidBody",
+"class": "DroppedWeapon",
+"language": "GDScript",
+"path": "res://Gameplay/Weapons/Dropped Weapon.gd"
+}, {
+"base": "Object",
+"class": "GameTick",
+"language": "GDScript",
+"path": "res://Gameplay/Game Tick.gd"
+}, {
 "base": "Timer",
 "class": "Gamemode",
 "language": "GDScript",
-"path": "res://Gamemodes/Default.gd"
+"path": "res://Gamemodes/Gamemode.gd"
+}, {
+"base": "Object",
+"class": "GameplayPacket",
+"language": "GDScript",
+"path": "res://Gameplay/Gameplay Packet.gd"
+}, {
+"base": "Reference",
+"class": "InputList",
+"language": "GDScript",
+"path": "res://Gameplay/InputList.gd"
+}, {
+"base": "PlayerInterface",
+"class": "LocalPlayer",
+"language": "GDScript",
+"path": "res://Gameplay/Players/Local Player.gd"
+}, {
+"base": "Spatial",
+"class": "Map",
+"language": "GDScript",
+"path": "res://Gameplay/Gameplay Objects/Map.gd"
 }, {
 "base": "Control",
 "class": "Menu",
 "language": "GDScript",
-"path": "res://addons/Menu.gd"
+"path": "res://Utilities/Menu.gd"
 }, {
 "base": "Node",
-"class": "input_list",
+"class": "NetworkPeer",
 "language": "GDScript",
-"path": "res://testing folder/input_list.gd"
+"path": "res://Gameplay/Network Peer.gd"
+}, {
+"base": "KinematicBody",
+"class": "PlayerController",
+"language": "GDScript",
+"path": "res://Gameplay/Players/Player Controller.gd"
+}, {
+"base": "Control",
+"class": "PlayerHUD",
+"language": "GDScript",
+"path": "res://interface/HUDs/Player HUD.gd"
+}, {
+"base": "Node",
+"class": "PlayerInterface",
+"language": "GDScript",
+"path": "res://Gameplay/Players/Player Interface.gd"
+}, {
+"base": "Object",
+"class": "PlayerUpdatePacket",
+"language": "GDScript",
+"path": "res://Gameplay/Player Update Packet.gd"
+}, {
+"base": "PlayerInterface",
+"class": "RemotePlayer",
+"language": "GDScript",
+"path": "res://Gameplay/Players/Remote Player.gd"
+}, {
+"base": "Object",
+"class": "Replay",
+"language": "GDScript",
+"path": "res://Gameplay/Replay.gd"
+}, {
+"base": "NetworkPeer",
+"class": "Server",
+"language": "GDScript",
+"path": "res://Gameplay/Server.gd"
+}, {
+"base": "PacketPeerUDP",
+"class": "ServerBrowserDialogue",
+"language": "GDScript",
+"path": "res://Utilities/Server Browser Dialogue Util.gd"
+}, {
+"base": "Object",
+"class": "TickEvent",
+"language": "GDScript",
+"path": "res://Gameplay/Tick Event.gd"
 } ]
 _global_script_class_icons={
 "BaseWeapon": "",
+"Client": "",
+"DroppedWeapon": "",
+"GameTick": "",
 "Gamemode": "",
+"GameplayPacket": "",
+"InputList": "",
+"LocalPlayer": "",
+"Map": "",
 "Menu": "",
-"input_list": ""
+"NetworkPeer": "",
+"PlayerController": "",
+"PlayerHUD": "",
+"PlayerInterface": "",
+"PlayerUpdatePacket": "",
+"RemotePlayer": "",
+"Replay": "",
+"Server": "",
+"ServerBrowserDialogue": "",
+"TickEvent": ""
 }
 
 [application]
@@ -53,7 +149,9 @@ mix_rate=48000
 
 settings="*res://userdata/settings.gd"
 Audio_Manager="*res://Assets/Audio/Audio Manager.gd"
-preloader="*res://preloader singleton.gd"
+preloader="*res://Utilities/Preloader Singleton.gd"
+Quack="*res://Utilities/Quack.gd"
+Lobby="*res://Gameplay/Lobby.gd"
 
 [display]
 
@@ -63,10 +161,9 @@ window/vsync/use_vsync=false
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
-[global]
+[editor_plugins]
 
-splash=false
-port=false
+enabled=PoolStringArray(  )
 
 [importer_defaults]
 
@@ -1124,6 +1221,14 @@ scene={
 
 [input]
 
+ui_accept={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777222,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
 forward={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
@@ -1258,7 +1363,10 @@ console={
 [layer_names]
 
 3d_render/layer_1="World"
+3d_physics/layer_1="Player"
 3d_render/layer_2="Viewmodel"
+3d_physics/layer_2="Utility"
+3d_physics/layer_3="Items"
 
 [physics]
 
@@ -1266,4 +1374,5 @@ common/physics_jitter_fix=0.0
 
 [rendering]
 
-environment/default_environment="res://Assets/Environments/default_env.tres"
+quality/shadows/filter_mode=2
+environment/default_environment="res://Assets/Environments/Default 3D Environment.tres"

@@ -1,22 +1,55 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://interface/Menus/Main Menu.gd" type="Script" id=1]
 [ext_resource path="res://interface/fonts/montserrat_eb_48.tres" type="DynamicFont" id=2]
 [ext_resource path="res://interface/Menus/Crosshair Menu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://interface/fonts/Montserrat-ExtraBold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://interface/Buttons/Menu Button Pressed.tres" type="StyleBox" id=5]
+[ext_resource path="res://interface/Buttons/Menu Button Normal.tres" type="StyleBox" id=6]
+[ext_resource path="res://interface/Buttons/Menu Button Hover.tres" type="StyleBox" id=7]
+[ext_resource path="res://interface/Buttons/Settings Button Normal.tres" type="StyleBox" id=8]
+[ext_resource path="res://interface/Buttons/Settings Button Hover.tres" type="StyleBox" id=9]
+[ext_resource path="res://interface/Buttons/Settings Button Pressed.tres" type="StyleBox" id=10]
+[ext_resource path="res://interface/Menus/Video Settings Menu.tscn" type="PackedScene" id=11]
+[ext_resource path="res://interface/Menus/Audio Settings Menu.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Utilities/Audible Menu.tscn" type="PackedScene" id=13]
+[ext_resource path="res://interface/Buttons/Godot Theme.tres" type="Theme" id=14]
+[ext_resource path="res://interface/fonts/montserrat_eb_52.tres" type="DynamicFont" id=15]
+
+[sub_resource type="DynamicFont" id=1]
+size = 42
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 42
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 80
+font_data = ExtResource( 4 )
 
 [node name="main menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+default_layer = NodePath("main")
+background = NodePath("background")
+other_exceptions = [ NodePath("Username Container") ]
 
 [node name="background" type="ColorRect" parent="."]
 margin_right = 1920.0
 margin_bottom = 1080.0
 color = Color( 0.129412, 0.4, 0.486275, 1 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
@@ -29,14 +62,15 @@ anchor_bottom = 0.5
 margin_left = -320.0
 margin_top = -156.0
 margin_right = 324.0
-margin_bottom = 286.0
+margin_bottom = 144.0
 custom_constants/separation = 20
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 
-[node name="Mode buttons label" type="Label" parent="main"]
+[node name="Main Label" type="Label" parent="main"]
 margin_right = 644.0
 margin_bottom = 52.0
 custom_fonts/font = ExtResource( 2 )
@@ -46,11 +80,15 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Main Button" type="Button" parent="main"]
+[node name="Play Button" type="Button" parent="main"]
 margin_top = 72.0
 margin_right = 644.0
-margin_bottom = 130.0
-custom_fonts/font = ExtResource( 2 )
+margin_bottom = 124.0
+rect_min_size = Vector2( 284, 0 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 0.494118, 0, 1 )
 custom_colors/font_color_pressed = Color( 1, 0, 0.74902, 1 )
@@ -60,10 +98,13 @@ __meta__ = {
 }
 
 [node name="Settings Button" type="Button" parent="main"]
-margin_top = 150.0
+margin_top = 144.0
 margin_right = 644.0
-margin_bottom = 208.0
-custom_fonts/font = ExtResource( 2 )
+margin_bottom = 196.0
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0.976471, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 0.494118, 0, 1 )
 custom_colors/font_color_pressed = Color( 1, 0, 0.74902, 1 )
@@ -73,9 +114,12 @@ __meta__ = {
 }
 
 [node name="Exit button" type="Button" parent="main"]
-margin_top = 228.0
+margin_top = 216.0
 margin_right = 644.0
-margin_bottom = 286.0
+margin_bottom = 268.0
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "Quit"
@@ -95,6 +139,7 @@ margin_right = 448.0
 margin_bottom = 240.0
 custom_constants/separation = 20
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
@@ -112,20 +157,23 @@ __meta__ = {
 [node name="Crosshair Settings Button" type="Button" parent="Settings"]
 margin_top = 72.0
 margin_right = 896.0
-margin_bottom = 130.0
+margin_bottom = 124.0
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/normal = ExtResource( 8 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0, 0.976471, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 0.494118, 0, 1 )
-custom_colors/font_color_pressed = Color( 1, 0, 0.74902, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 1, 0.721569, 1 )
 text = "Crosshair Settings"
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="Sensitivity Label" type="Label" parent="Settings"]
-margin_top = 150.0
+margin_top = 144.0
 margin_right = 896.0
-margin_bottom = 202.0
+margin_bottom = 196.0
 custom_fonts/font = ExtResource( 2 )
 text = "Sensitivity"
 align = 1
@@ -134,9 +182,9 @@ __meta__ = {
 }
 
 [node name="Sensitivity Container" type="HBoxContainer" parent="Settings"]
-margin_top = 222.0
+margin_top = 216.0
 margin_right = 896.0
-margin_bottom = 274.0
+margin_bottom = 268.0
 custom_constants/separation = 50
 alignment = 1
 __meta__ = {
@@ -169,14 +217,33 @@ __meta__ = {
 }
 
 [node name="Video Settings Button" type="Button" parent="Settings"]
-margin_top = 294.0
+margin_top = 288.0
 margin_right = 896.0
-margin_bottom = 352.0
+margin_bottom = 340.0
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/normal = ExtResource( 8 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0, 0.976471, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 0.494118, 0, 1 )
-custom_colors/font_color_pressed = Color( 1, 0, 0.74902, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 1, 0.721569, 1 )
 text = "Video Settings"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Audio Settings Button" type="Button" parent="Settings"]
+margin_top = 360.0
+margin_right = 896.0
+margin_bottom = 412.0
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/normal = ExtResource( 8 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0.976471, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0, 1, 0.721569, 1 )
+text = "Audio Settings"
 __meta__ = {
 "_editor_description_": ""
 }
@@ -184,103 +251,58 @@ __meta__ = {
 [node name="CrosshairItems" parent="." instance=ExtResource( 3 )]
 visible = false
 
-[node name="Video Settings" type="VBoxContainer" parent="."]
+[node name="Audio Settings" parent="." instance=ExtResource( 12 )]
 visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -448.0
-margin_top = -412.0
-margin_right = 448.0
-margin_bottom = 240.0
-custom_constants/separation = 20
+
+[node name="Video Settings" parent="." instance=ExtResource( 11 )]
+visible = false
+
+[node name="Node" parent="." instance=ExtResource( 13 )]
+
+[node name="Username Container" type="VBoxContainer" parent="."]
+margin_left = 204.0
+margin_top = 700.0
+margin_right = 1716.0
+margin_bottom = 918.0
+rect_min_size = Vector2( 1512, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+theme = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 
-[node name="Title" type="Label" parent="Video Settings"]
-margin_right = 896.0
-margin_bottom = 52.0
-custom_fonts/font = ExtResource( 2 )
-text = "Video Settings"
-align = 1
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="Fullscreen" type="CheckBox" parent="Video Settings"]
-margin_top = 72.0
-margin_right = 896.0
-margin_bottom = 132.0
-custom_fonts/font = ExtResource( 2 )
+[node name="Title" type="Label" parent="Username Container"]
+margin_right = 1512.0
+margin_bottom = 107.0
+rect_min_size = Vector2( 507, 60 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0, 1, 0.858824, 1 )
-custom_colors/font_color_pressed = Color( 0.686275, 0, 1, 1 )
-text = "Fullscreen"
+text = "USERNAME"
 align = 1
-expand_icon = true
+
+[node name="Username Setter" type="LineEdit" parent="Username Container"]
+margin_top = 111.0
+margin_right = 1512.0
+margin_bottom = 218.0
+rect_min_size = Vector2( 1512, 0 )
+theme = ExtResource( 14 )
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.498039, 0.807843, 1, 1 )
+text = "Guest"
+align = 1
+max_length = 30
 __meta__ = {
-"_editor_description_": ""
+"_edit_use_anchors_": false
 }
 
-[node name="Enable VSync" type="CheckBox" parent="Video Settings"]
-margin_top = 152.0
-margin_right = 896.0
-margin_bottom = 212.0
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0, 1, 0.858824, 1 )
-custom_colors/font_color_pressed = Color( 0.686275, 0, 1, 1 )
-text = "Enable V-Sync"
-align = 1
-expand_icon = true
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="Max FPS container" type="HBoxContainer" parent="Video Settings"]
-margin_top = 232.0
-margin_right = 896.0
-margin_bottom = 294.0
-custom_constants/separation = 50
-alignment = 1
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="Label" type="Label" parent="Video Settings/Max FPS container"]
-margin_left = 186.0
-margin_top = 5.0
-margin_right = 505.0
-margin_bottom = 57.0
-rect_min_size = Vector2( 120, 0 )
-custom_fonts/font = ExtResource( 2 )
-text = "Maximum FPS"
-align = 1
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="Max FPS" type="LineEdit" parent="Video Settings/Max FPS container"]
-margin_left = 555.0
-margin_right = 709.0
-margin_bottom = 62.0
-mouse_default_cursor_shape = 0
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0, 1, 0.196078, 1 )
-align = 1
-max_length = 3
-__meta__ = {
-"_editor_description_": ""
-}
-[connection signal="pressed" from="main/Main Button" to="." method="_on_Testing_Button_pressed"]
+[connection signal="pressed" from="main/Play Button" to="." method="_on_Play_Button_pressed"]
 [connection signal="pressed" from="main/Settings Button" to="." method="_on_Settings_Button_pressed"]
 [connection signal="pressed" from="main/Exit button" to="." method="_on_Exit_button_pressed"]
 [connection signal="pressed" from="Settings/Crosshair Settings Button" to="." method="_on_Crosshair_Settings_Button_pressed"]
 [connection signal="value_changed" from="Settings/Sensitivity Container/Sensitivity Slider" to="." method="_on_sensitivity_value_changed"]
 [connection signal="pressed" from="Settings/Video Settings Button" to="." method="_on_Video_Settings_Button_pressed"]
-[connection signal="toggled" from="Video Settings/Fullscreen" to="." method="_on_fullscreen_toggled"]
-[connection signal="toggled" from="Video Settings/Enable VSync" to="." method="_on_Enable_VSync_toggled"]
-[connection signal="text_entered" from="Video Settings/Max FPS container/Max FPS" to="." method="_on_Max_FPS_text_changed"]
+[connection signal="pressed" from="Settings/Audio Settings Button" to="." method="_on_Audio_Settings_Button_pressed"]
+[connection signal="text_changed" from="Username Container/Username Setter" to="." method="_on_Username_Setter_text_changed"]

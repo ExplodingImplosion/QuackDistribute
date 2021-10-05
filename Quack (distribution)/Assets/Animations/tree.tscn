@@ -1,17 +1,11 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://3d assets/tree.tres" type="AnimationNodeBlendTree" id=1]
+[ext_resource path="res://Assets/Animations/Weapon Animation Tree.tres" type="AnimationNodeBlendTree" id=1]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=53]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
 [node name="tree" type="AnimationTree"]
 tree_root = ExtResource( 1 )
-"parameters/add shot 1/add_amount" = 1.0
-"parameters/add shot 2/add_amount" = 1.0
-"parameters/shoot gun/active" = false
-"parameters/shoot gun 2/active" = false
-"parameters/weapon state/playback" = SubResource( 53 )
-"parameters/weapon state/aimdirs/blend_position" = 0.0
-"parameters/weapon state/aimdirs/0/blend_position" = Vector2( 0, 0 )
-"parameters/weapon state/aimdirs/1/blend_position" = Vector2( 0, 0 )
-"parameters/weapon state/aimdirs/2/blend_position" = Vector2( 0, 0 )
+"parameters/Add First Shot/active" = false
+"parameters/Add Second Shot/active" = false
+"parameters/Weapon State/playback" = SubResource( 1 )

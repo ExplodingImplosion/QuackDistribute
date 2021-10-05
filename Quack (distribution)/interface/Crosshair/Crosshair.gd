@@ -49,7 +49,7 @@ func build_crosshair():
 			obj.get_child(2).set_position(Vector2(-border_size, 0))
 			obj.get_child(3).set_position(Vector2(width, 0))
 			for child in obj.get_children():
-				#child.set_frame_color(Color(0,0,0,border_opacity))
+				child.set_frame_color(Color(0,0,0,border_opacity))
 				child.set_visible(true)
 				if child.get_index() < 2:
 					child.set_custom_minimum_size(Vector2(width + border_size*2, border_size))
@@ -73,9 +73,21 @@ func build_crosshair():
 		dot.set_frame_color(Color(dot_color.r, dot_color.g, dot_color.b, dot_opacity))
 		dot.set_custom_minimum_size(Vector2(dot_size * 2,dot_size * 2))
 		dot._set_size(Vector2(dot_size * 2,dot_size * 2))
-		dot.set_position(Vector2(dot_size/2 * -1, dot_size/2 * -1))
+		dot.set_position(Vector2(dot_size * -1, dot_size * -1))
+		# tbf this is how it should be done for the normal crosshairs, too
+		if dot_border == true:
+			for child in dot.get_children():
+				child.set_frame_color(Color(0,0,0,border_opacity))
+				child.set_visible(true)
+				child.set_custom_minimum_size(Vector2((dot_size + border_size) * 2, (dot_size + border_size) * 2))
+				child._set_size(child.get_custom_minimum_size())
+				print(child.get_size())
+				child.set_position(Vector2(border_size * -1, border_size * -1))
+		else:
+			dot.get_child(0).set_visible(false)
 	else:
 		dot.set_visible(false)
+		dot.get_child(0).set_visible(false)
 
 
 #this code is absolute dogshit, but I'm doing this with like 4 hours of sleep, and I'm out of fucks to give right now
